@@ -1,2 +1,2 @@
-# Buscador-de-Peliculas
-Movies rental application 
+# Movies rental application
+ 
