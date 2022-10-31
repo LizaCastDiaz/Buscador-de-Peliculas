@@ -1,25 +1,46 @@
+const express = require("express");
+const app = express();
+const db = require('./db/db')
+const router = require('./router/router')
 
-const express = require('express');
+const PORT = 3000;
+
+app.use(express.json());
+
+
 const bodyParser = require('body-parser');
 const colors = require('colors');
 
 
-const app = express();
-//indicamos puerto de conexion
-const PORT = 3000;
-
-app.use(express.json());
-app.use(router)
-
-
-//Definimos la ruta raiz
-app.get('/', (req, res) => {
-    let date = new Date();
-    console.log(`home route works ------  ${date}`);
-    res.send('Bienvenidos a Express');
+app.listen(PORT, () => {     
+    console.log(`Servidor conectado en el puerto  ${PORT}`);     
+    db.authenticate().then(()=> {         
+        console.log("Conectado a la base de datos");     
+    }).catch(error => {         
+        console.log('No se ha conectado a la base de datos' + error)     
+    })
+    
 });
 
-//Iniciamos el server
-app.listen(port, () => {
-    console.log(`Server on port ${port}`.bgGreen.black);
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
