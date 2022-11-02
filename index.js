@@ -3,10 +3,11 @@ const app = express();
 const db = require('./db/db')
 const router = require('./router/router')
 
+
 const PORT = 3000;
 
 app.use(express.json());
-
+app.use(router)
 
 const bodyParser = require('body-parser');
 const colors = require('colors');
