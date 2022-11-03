@@ -1,13 +1,11 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
-    "database": "blockbuster",
+    "password": null,
+    "database": "Blockbuster",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "port": "3306"
-    
-    
+    "port": 3306
   },
   "test": {
     "username": "root",
