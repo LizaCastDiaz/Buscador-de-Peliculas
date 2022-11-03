@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const db = require('./db/db');
 const router = require('./router'); //llamamos al archivo router
 const PORT = 3000;  //puerto de conexion
 
