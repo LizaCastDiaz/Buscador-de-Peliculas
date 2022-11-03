@@ -1,18 +1,16 @@
 const express = require("express");
 const app = express();
-const db = require('./db/db')
-const router = require('./router/router')
-
-
 const PORT = 3000;
-
-app.use(express.json());
-app.use(router)
-
-const bodyParser = require('body-parser');
-const colors = require('colors');
+const router = require('./router');
 
 
+//middlewares
+app.use(express.json()); //PUEDO OBTENER JSON DEL BODY
+app.use(router);
+
+
+
+//Servidor en escucha. Conectado a la base de datos
 app.listen(PORT, () => {     
     console.log(`Servidor conectado en el puerto  ${PORT}`);     
     db.authenticate().then(()=> {         
@@ -23,6 +21,14 @@ app.listen(PORT, () => {
     
 });
 
+// const morgan = require('morgan');
+// const models = require('./models/index');
+// const sequelize = require('./db/db');
+// const db = require('./db/db');
+
+
+// const bodyParser = require('body-parser');
+// const colors = require('colors');
 
 
 

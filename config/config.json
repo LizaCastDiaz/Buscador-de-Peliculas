@@ -2,10 +2,10 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "movie",
+    "database": "blockbuster",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "router": "3306"
+    "port": "3306"
     
     
   },
