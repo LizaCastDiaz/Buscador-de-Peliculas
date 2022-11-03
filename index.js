@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
-const router = require('./router');
-const PORT = 3000;
-app.use(express.json());
+const router = require('./router'); //llamamos al archivo router
+const PORT = 3000;  //puerto de conexion
+
+app.use(express.json()); //indicamos al archivo express que utilice los archivos .JSON
+
 app.use(router);
 
 
