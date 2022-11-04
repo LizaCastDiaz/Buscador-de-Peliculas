@@ -14,16 +14,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   rental.init({
-    id_rental: DataTypes.INTEGER,
+    id_rental: {
+     type: DataTypes.INTEGER,
+     primaryKey: true,
+     allowNull: false
+    } ,
     payment_method: DataTypes.STRING,
     return_date: DataTypes.DATE,
     rental_date: DataTypes.DATE,
     rental_price: DataTypes.INTEGER,
+    
     user_id: DataTypes.INTEGER,
     articles_id: DataTypes.INTEGER
-  }, {
+  }, 
+  {
     sequelize,
     modelName: 'rental',
+    freezeTableName: true,
+    timestamps: false
   });
   return rental;
 };

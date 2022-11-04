@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   movies.init({
-    id_movies: DataTypes.INTEGER,
+    id_movies: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false
+    },
     movie_title: DataTypes.STRING,
     genre: DataTypes.STRING,
     release_date: DataTypes.DATEONLY,
@@ -22,9 +26,12 @@ module.exports = (sequelize, DataTypes) => {
     synopsis: DataTypes.STRING,
     director: DataTypes.STRING,
     id_articles: DataTypes.INTEGER
-  }, {
+  }, 
+  {
     sequelize,
     modelName: 'movies',
+    freezeTableName: true,
+    timestamps: false
   });
   return movies;
 };

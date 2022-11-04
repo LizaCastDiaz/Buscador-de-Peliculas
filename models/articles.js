@@ -14,14 +14,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   articles.init({
-    id_articles: DataTypes.INTEGER,
+    id_articles: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false
+    },
     id_user: DataTypes.INTEGER,
     id_movie: DataTypes.INTEGER,
     id_series: DataTypes.INTEGER,
     id_rental: DataTypes.INTEGER
-  }, {
+  }, 
+
+
+  
+  {
     sequelize,
     modelName: 'articles',
+    freezeTableName: true,
+    timestamps: false
   });
   return articles;
 };
