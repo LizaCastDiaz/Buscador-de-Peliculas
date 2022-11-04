@@ -31,7 +31,14 @@ module.exports = {
         type: Sequelize.STRING
       },
       id_articles: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+        references:{
+          model: 'articles',
+          key: 'id_article'
+        }
       },
       createdAt: {
         allowNull: false,

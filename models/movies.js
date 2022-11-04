@@ -10,13 +10,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      movies.belongsTo(models.articles);
     }
   }
   movies.init({
     id_movies: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
       allowNull: false
     },
     movie_title: DataTypes.STRING,
@@ -25,8 +26,17 @@ module.exports = (sequelize, DataTypes) => {
     rating: DataTypes.INTEGER,
     synopsis: DataTypes.STRING,
     director: DataTypes.STRING,
-    id_articles: DataTypes.INTEGER
+    id_articles: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'articles',
+        key: 'id_article'
+      }
+
+    } 
   }, 
+
   {
     sequelize,
     modelName: 'movies',

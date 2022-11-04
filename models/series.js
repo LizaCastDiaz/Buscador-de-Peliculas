@@ -10,21 +10,30 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      series.belongsTo(models.articles);
     }
   }
   series.init({
     id_series: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
       allowNull: false
     },
     series_title: DataTypes.STRING,
     genre: DataTypes.STRING,
     release_date: DataTypes.DATEONLY,
     rating: DataTypes.INTEGER,
-    id_articles: DataTypes.INTEGER
+    id_articles: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'articles',
+        key: 'id_article'
+      }
+    }
   },
+  
   {
     sequelize,
     modelName: 'series',

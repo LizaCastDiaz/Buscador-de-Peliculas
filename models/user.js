@@ -10,29 +10,40 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      user.belongsTo(models.roles);
+      user.hasMany(models.rental);
     }
   }
   user.init({
     id_user: {
-     type: DataTypes.INTEGER,
-     primaryKey: true,
-     allowNull: false
-
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
     } ,
     name: DataTypes.STRING,
     surname: DataTypes.STRING,
     document: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password:{
+    email:  DataTypes.STRING,
+    password: DataTypes.STRING,
+    id_role: {
       type: DataTypes.STRING,
-      validate: {
-        len: [1,45]
+      references: {
+        model: 'roles',
+        key: 'id_role'
       }
-    } ,
-    rental_id: DataTypes.INTEGER,
-    id_articles: DataTypes.INTEGER
-  }, {
+
+    },
+    id_rental: { 
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'rental',
+        key:'id_rental'
+      }
+    }
+  },
+  
+  {
     sequelize,
     modelName: 'user',
     freezeTableName: true,

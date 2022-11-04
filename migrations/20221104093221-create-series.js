@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_series: {
-        type: Sequelize.INTEGER
-      },
       series_title: {
         type: Sequelize.STRING
       },
@@ -25,7 +22,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_articles: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+        References: {
+          module: 'articles',
+          key: 'id_articles'
+        }
+        
       },
       createdAt: {
         allowNull: false,
