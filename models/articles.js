@@ -3,21 +3,19 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Articles extends Model {
+  class articles extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.hasOne(models.id_movie);
-      this.hasOne(models.id_series);
-      this.hasOne(models.id_user);
-      this.belongsToMany(models.id_rental);
-      
+      articles.hasOne(models.movies);
+      articles.hasOne(models.series);
+      articles.belongsToMany(models.rental, { through: 'articlesRental'}); 
     }
   }
-  Articles.init({
+  articles.init({
     id_article: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -27,9 +25,8 @@ module.exports = (sequelize, DataTypes) => {
   }, 
   {
     sequelize,
-    modelName: 'Articles',
-    freezeTableName: true,
+    modelName: 'articles',
     timestamps: false
   });
-  return Articles;
+  return articles;
 };

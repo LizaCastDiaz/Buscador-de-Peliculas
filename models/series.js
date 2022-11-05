@@ -10,27 +10,37 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.belongsTo(models.articles,{
-        foreignKey: 'id_series'
-      });
+      series.belongsTo(models.articles);
     }
   }
   series.init({
-    series_title: DataTypes.STRING,
+    id_series:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    title: DataTypes.STRING,
     genre: DataTypes.STRING,
-    release_date: DataTypes.DATEONLY,
+    year: DataTypes.DATEONLY,
     rating: DataTypes.INTEGER,
-
-  },
-  
+    seasons: DataTypes.INTEGER,
+    episodes: DataTypes.INTEGER,
+    next_episode: DataTypes.DATEONLY,
+    article_id_article: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'articles',
+        key: 'id_article'
+      }}},
   {
     sequelize,
-    modelName: 'Series',
-    freezeTableName: true,
+    modelName: 'series',
     timestamps: false
   });
   return series;
 };
 
 
-module.exports=series
+// module.exports=series
