@@ -23,13 +23,8 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      id_rol: {
+      id_role: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'rol',
-          key: 'id_rol'
-        }
     },
    
       // id_rental: {
@@ -40,9 +35,6 @@ module.exports = {
       //     key: 'id_rental'
       //   }
       // },
-
-
-
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -52,6 +44,17 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+    await queryInterface.addConstraint('user', {
+      fields: ['id_role'],
+      type: 'foreign key',
+      name: 'fk_user_role',
+      references: {
+        table: 'role',
+        field: 'id_role'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    }) 
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('users');

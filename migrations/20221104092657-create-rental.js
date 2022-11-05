@@ -19,14 +19,8 @@ module.exports = {
       rental_price: {
         type: Sequelize.INTEGER
       },
-
       id_user: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'users',
-          key: 'id_user'
-        }
       },
       createdAt: {
         allowNull: false,
@@ -37,11 +31,18 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+    await queryInterface.addConstraint('rentals', {
+      fields: ['id_user'],
+      type: 'foreign key',
+      name: 'fk_rental_users',
+      references: {
+        table: 'user',
+        field: 'id_user'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    }) 
   },
-
-
-
-
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('rentals');
   }

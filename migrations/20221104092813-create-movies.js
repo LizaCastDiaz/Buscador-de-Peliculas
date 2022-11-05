@@ -10,12 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_articles: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'articles',
-          key: 'id_articles'
-        }
+        type: Sequelize.INTEGER
       },
       title: {
         type: Sequelize.STRING
@@ -46,7 +41,19 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+      
     });
+    await queryInterface.addConstraint('movies', {
+      fields: ['id_articles'],
+      type: 'foreign key',
+      name: 'fk_movies_articles',
+      references: {
+        table: 'articles',
+        field: 'id_articles'
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade'
+    }) 
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('movies');

@@ -9,14 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      // id_rental: {
-      //   type: DataTypes.INTEGER,
-      //   allowNull: false,
-      //   references: {
-      //     model: 'Rental',
-      //     key: 'id_rental'
-      //   }
-      // },
+  
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

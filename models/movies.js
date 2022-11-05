@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      movies.belongsTo(models.articles);
+      movies.belongsTo(models.articles, {
+        foreignKey: "id_articles"
+      });
     }
   }
   movies.init({
@@ -28,18 +30,11 @@ module.exports = (sequelize, DataTypes) => {
     synopsis: DataTypes.STRING,
     director: DataTypes.STRING,
     duration: DataTypes.STRING,  
-    
-    article_id_article: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: 'articles',
-      key: 'id_article'
-    }}},
-    {
+  },
+  {
     sequelize,
     modelName: 'movies',
-    timestamps: false
+   
   });
   return movies;
 };

@@ -10,13 +10,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      articles.hasOne(models.movies);
-      articles.hasOne(models.series);
-      articles.belongsToMany(models.rental, { through: 'articlesRental'}); 
+      articles.hasOne(models.movies, {
+        foreignKey: "id_movies"
+      });
+      articles.hasOne(models.series, {
+        foreignKey: "id_series"
+      });
+      articles.belongsToMany(models.rental, { through: 'articlesRental', foreignKey: "article_id_article"}); 
     }
   }
   articles.init({
-    id_article: {
+    id_articles: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -26,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
   {
     sequelize,
     modelName: 'articles',
-    timestamps: false
+
   });
   return articles;
 };

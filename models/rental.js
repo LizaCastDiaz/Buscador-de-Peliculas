@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      rental.belongsToMany(models.articles, { through: 'articlesRental'})
-      rental.belongsTo(models.user);
+      rental.belongsToMany(models.articles, { through: 'articlesRental', foreignKey: "rental_id_rental"})
+      rental.belongsTo(models.user, {foreignKey: "id_user"});
 
       
     }
@@ -27,23 +27,21 @@ module.exports = (sequelize, DataTypes) => {
     rental_date: DataTypes.DATE,
     rental_price: DataTypes.INTEGER,
     
-    user_id_user: {
-      type: DataTypes.INTEGER,
+  //   user_id_user: {
+  //     type: DataTypes.INTEGER,
       
-        references: {
-          model: 'users',
-          key: 'id_user'
-        },
-    }, 
-  }, 
-
+  //       references: {
+  //         model: 'users',
+  //         key: 'id_user'
+  //       },
+  //   }, 
+   }, 
 
   
   {
     sequelize,
     modelName: 'rental',
-    freezeTableName: true,
-    timestamps: false
+
   });
   return rental;
 };
