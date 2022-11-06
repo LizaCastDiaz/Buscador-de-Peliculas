@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('articles', {
+    await queryInterface.createTable('Articles', {
       id_articles: {
         allowNull: false,
         autoIncrement: true,
@@ -17,12 +17,22 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
-    });
+      },
+    //   id_rental: {
+    //     type: Sequelize.INTEGER,
+    //     references: {
+    //       model: "Rental",
+    //       key: "id_rental"
+    //     },
+    //     onDelete: "cascade",
+    //     onUpdate: "cascade"
+    // }
+     });
+    
   },
 
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('articles');
+    await queryInterface.dropTable('Articles');
   }
 };

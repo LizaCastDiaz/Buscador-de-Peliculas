@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('Users', {
       id_user: {
         allowNull: false,
         autoIncrement: true,
@@ -23,18 +23,6 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
-      id_role: {
-        type: Sequelize.INTEGER,
-    },
-   
-      // id_rental: {
-      //   type: DataTypes.INTEGER,
-      //   allowNull: false,
-      //   references: {
-      //     model: 'Rental',
-      //     key: 'id_rental'
-      //   }
-      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -42,21 +30,32 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
-    });
-    await queryInterface.addConstraint('user', {
-      fields: ['id_role'],
-      type: 'foreign key',
-      name: 'fk_user_role',
-      references: {
-        table: 'role',
-        field: 'id_role'
       },
-      onDelete: 'cascade',
-      onUpdate: 'cascade'
-    }) 
+      id_role: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Role",
+          key: "id_role"
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade"
+    }
+    });
+    
+    // await queryInterface.addConstraint('Role', {
+    //   fields: ['id_role'],
+    //   type: 'foreign key',
+    //   name: 'fk_user_role',
+    //   references: {
+    //     table: 'Role',
+    //     field: 'id_role'
+    //   },
+    //   onDelete: 'cascade',
+    //   onUpdate: 'cascade'
+    // }) 
+  
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('Users');
   }
 };

@@ -4,19 +4,20 @@ const {
 } = require('sequelize');
 const { FOREIGNKEYS } = require('sequelize/types/query-types');
 module.exports = (sequelize, DataTypes) => {
-  class movies extends Model {
+  class Movies extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      movies.belongsTo(models.articles, {
-        foreignKey: "id_articles"
-      });
+      // Movies.belongsTo(models.Articles, {
+      //   foreignKey: "id_articles"
+      // });
+      Movies.belongsTo(models.Articles);
     }
   }
-  movies.init({
+  Movies.init({
     id_movies:{
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -27,14 +28,15 @@ module.exports = (sequelize, DataTypes) => {
     genre: DataTypes.STRING,
     release_date: DataTypes.DATEONLY,
     rating: DataTypes.INTEGER,
-    synopsis: DataTypes.STRING,
+    synopsis: DataTypes.TEXT,
     director: DataTypes.STRING,
     duration: DataTypes.STRING,  
   },
   {
     sequelize,
-    modelName: 'movies',
+    modelName: 'Movies',
    
   });
-  return movies;
+  return Movies;
 };
+module.exports = Movies

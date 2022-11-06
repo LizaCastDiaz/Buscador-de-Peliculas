@@ -3,19 +3,21 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class series extends Model {
+  class Series extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      series.belongsTo(models.articles,{
-        foreignKey: "id_articles"
-      });
+      // Series.belongsTo(models.Articles,{
+      //   foreignKey: "id_articles"
+      // });
+
+      Series.belongsTo(models.Articles);
     }
   }
-  series.init({
+  Series.init({
     id_series:{
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -30,18 +32,13 @@ module.exports = (sequelize, DataTypes) => {
     episodes: DataTypes.INTEGER,
     next_episode: DataTypes.DATEONLY,
     
-    // article_id_article: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'articles',
-    //     key: 'id_articles'
-    //   }}
+    
   },{  
     sequelize,
-    modelName: 'series',
+    modelName: 'Series',
   });
-  return series;
+  return Series;
 };
+module.exports = Series
 
 

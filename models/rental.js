@@ -3,20 +3,20 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class rental extends Model {
+  class Rental extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      rental.belongsToMany(models.articles, { through: 'articlesRental', foreignKey: "rental_id_rental"})
-      rental.belongsTo(models.user, {foreignKey: "id_user"});
+      // Rental.belongsToMany(models.Articles, { through: 'articlesRental', foreignKey: "rental_id_rental"})
+      // Rental.belongsTo(models.User, {foreignKey: "id_user"});
 
-      
+      Rental.belongsTo(models.User);
     }
   }
-  rental.init({
+  Rental.init({
     id_rental: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -27,21 +27,23 @@ module.exports = (sequelize, DataTypes) => {
     rental_date: DataTypes.DATE,
     rental_price: DataTypes.INTEGER,
     
-  //   user_id_user: {
-  //     type: DataTypes.INTEGER,
-      
-  //       references: {
-  //         model: 'users',
-  //         key: 'id_user'
-  //       },
-  //   }, 
+    id_user: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "User",
+        key: "id_user"
+      },
+      onDelete: "cascade",
+      onUpdate: "cascade"
+  }
    }, 
 
   
   {
     sequelize,
-    modelName: 'rental',
+    modelName: 'Rental',
 
   });
-  return rental;
+  return Rental;
 };
+module.exports = Rental

@@ -2,16 +2,16 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('series', {
+    await queryInterface.createTable('Series', {
       id_series: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_articles: {
-        type: Sequelize.INTEGER,
-      },
+      // id_articles: {
+      //   type: Sequelize.INTEGER
+      // },
       title: {
         type: Sequelize.STRING
       },
@@ -41,21 +41,30 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
-    });
-    await queryInterface.addConstraint('series', {
-      fields: ['id_articles'],
-      type: 'foreign key',
-      name: 'fk_series_articles',
-      references: {
-        table: 'articles',
-        field: 'id_articles'
       },
-      onDelete: 'cascade',
-      onUpdate: 'cascade'
-    }) 
+      id_articles: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Articles",
+          key: "id_articles"
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade"
+    }
+    });
+    // await queryInterface.addConstraint('Series', {
+    //   fields: ['id_articles'],
+    //   type: 'foreign key',
+    //   name: 'fk_series_articles',
+    //   references: {
+    //     table: 'Articles',
+    //     field: 'id_articles'
+    //   },
+    //   onDelete: 'cascade',
+    //   onUpdate: 'cascade'
+    // }) 
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('series');
+    await queryInterface.dropTable('Series');
   }
 };

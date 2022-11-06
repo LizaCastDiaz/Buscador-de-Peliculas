@@ -12,6 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true}));//codificar la url
 app.use(router);
 
 
-app.listen(PORT, () =>{
-    console.log(`servidor corriendo en el puerto ${PORT}`);
+app.listen(PORT, ()=>{
+    console.log(`El servidor esta up y alojado en el puerto => ${PORT}`);
+
+    db.sync({force:true}).then(()=> {
+        console.log("Conectado a la base de datos");
+    }).catch(error => {
+        console.log('Se ha producido un error: ' + error)
+    })
 });
