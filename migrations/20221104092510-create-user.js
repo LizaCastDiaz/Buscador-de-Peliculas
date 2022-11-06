@@ -31,6 +31,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+
+
+      
       id_role: {
         type: Sequelize.INTEGER,
         references: {
@@ -39,7 +42,16 @@ module.exports = {
         },
         onDelete: "cascade",
         onUpdate: "cascade"
-    }
+    },
+  //   id_articles: { //borrar
+  //     type: Sequelize.INTEGER,
+  //     references: {
+  //       model: "Articles",
+  //       key: "id_articles"
+  //     },
+  //     onDelete: "cascade",
+  //     onUpdate: "cascade"
+  // }
     });
     
     // await queryInterface.addConstraint('Role', {

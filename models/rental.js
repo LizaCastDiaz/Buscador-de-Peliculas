@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       // Rental.belongsTo(models.User, {foreignKey: "id_user"});
 
       Rental.belongsTo(models.User);
+      Rental.hasMany(models.Articles); //borrar
     }
   }
   Rental.init({
@@ -27,10 +28,10 @@ module.exports = (sequelize, DataTypes) => {
     rental_date: DataTypes.DATE,
     rental_price: DataTypes.INTEGER,
     
-    id_user: {
+   use_id_user: { //borrar
       type: DataTypes.INTEGER,
       references: {
-        model: "User",
+        model: "Users",
         key: "id_user"
       },
       onDelete: "cascade",

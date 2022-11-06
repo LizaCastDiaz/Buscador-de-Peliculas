@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     password: DataTypes.STRING ,
     
-    id_role: {
+    role_id_role: { //borrar
       type: DataTypes.INTEGER,
       references: {
         model: "Role",
