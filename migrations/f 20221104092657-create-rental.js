@@ -38,7 +38,19 @@ module.exports = {
         },
         onDelete: "cascade",
         onUpdate: "cascade"
-    }
+    },
+    id_articles: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: "Articles",
+        key: "id_articles"
+      },
+      onDelete: "cascade",
+      onUpdate: "cascade"
+  }
+
+
+
     });
     // await queryInterface.addConstraint('Rentals', {
     //   fields: ['id_user'],
