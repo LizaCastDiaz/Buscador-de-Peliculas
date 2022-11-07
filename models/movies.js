@@ -23,11 +23,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     title: DataTypes.STRING,
     genre: DataTypes.STRING,
-    release_date: DataTypes.DATEONLY,
+    release_date: DataTypes.DATE,
     rating: DataTypes.INTEGER,
     synopsis: DataTypes.TEXT,
     director: DataTypes.STRING,
-    duration: DataTypes.STRING,  
+    duration: DataTypes.STRING, 
+    in_theters: DataTypes.BOOLEAN 
   },
   {
     sequelize,

@@ -45,20 +45,7 @@ module.exports = {
       onUpdate: "cascade"
   }
 
-
-
     });
-    // await queryInterface.addConstraint('Rentals', {
-    //   fields: ['id_user'],
-    //   type: 'foreign key',
-    //   name: 'fk_rental_users',
-    //   references: {
-    //     table: 'User',
-    //     field: 'id_user'
-    //   },
-    //   onDelete: 'cascade',
-    //   onUpdate: 'cascade'
-    // }) 
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Rentals');

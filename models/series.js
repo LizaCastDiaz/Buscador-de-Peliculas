@@ -22,11 +22,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     title: DataTypes.STRING,
     genre: DataTypes.STRING,
-    year: DataTypes.DATEONLY,
+    year: DataTypes.DATE,
     rating: DataTypes.INTEGER,
     seasons: DataTypes.INTEGER,
     episodes: DataTypes.INTEGER,
-    next_episode: DataTypes.DATEONLY,
+    new_episode: DataTypes.DATE,
+    Overview: DataTypes.TEXT
     
     
   },{  

@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     rental_date: DataTypes.DATE,
     rental_price: DataTypes.INTEGER,
     
-   use_id_user: { //borrar
+   use_id_user: {
       type: DataTypes.INTEGER,
       references: {
         model: "Users",

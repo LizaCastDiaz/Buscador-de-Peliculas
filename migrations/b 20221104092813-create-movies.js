@@ -16,19 +16,22 @@ module.exports = {
         type: Sequelize.STRING
       },
       release_date: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATE
       },
       rating: {
         type: Sequelize.INTEGER
       },
       synopsis: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       director: {
         type: Sequelize.STRING
       },
       duration: {
         type: Sequelize.STRING
+      },
+      in_theters: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

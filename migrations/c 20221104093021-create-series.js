@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       release_date: {
-        type: Sequelize.DATEONLY
+        type: Sequelize.DATE
       },
       rating: {
         type: Sequelize.INTEGER
@@ -27,9 +27,13 @@ module.exports = {
       episodes: {
         type: Sequelize.INTEGER
       },
-      next_episode: {
+      new_episode: {
         type: Sequelize.INTEGER
       },
+      overview: {
+        type: Sequelize.TEXT
+      },
+
       
       createdAt: {
         allowNull: false,
