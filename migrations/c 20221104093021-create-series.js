@@ -9,9 +9,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      // id_articles: {
-      //   type: Sequelize.INTEGER
-      // },
       title: {
         type: Sequelize.STRING
       },
@@ -52,17 +49,6 @@ module.exports = {
         onUpdate: "cascade"
     }
     });
-    // await queryInterface.addConstraint('Series', {
-    //   fields: ['id_articles'],
-    //   type: 'foreign key',
-    //   name: 'fk_series_articles',
-    //   references: {
-    //     table: 'Articles',
-    //     field: 'id_articles'
-    //   },
-    //   onDelete: 'cascade',
-    //   onUpdate: 'cascade'
-    // }) 
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Series');

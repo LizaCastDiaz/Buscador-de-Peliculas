@@ -43,28 +43,8 @@ module.exports = {
         onDelete: "cascade",
         onUpdate: "cascade"
     },
-  //   id_articles: { //borrar
-  //     type: Sequelize.INTEGER,
-  //     references: {
-  //       model: "Articles",
-  //       key: "id_articles"
-  //     },
-  //     onDelete: "cascade",
-  //     onUpdate: "cascade"
-  // }
     });
     
-    // await queryInterface.addConstraint('Role', {
-    //   fields: ['id_role'],
-    //   type: 'foreign key',
-    //   name: 'fk_user_role',
-    //   references: {
-    //     table: 'Role',
-    //     field: 'id_role'
-    //   },
-    //   onDelete: 'cascade',
-    //   onUpdate: 'cascade'
-    // }) 
   
   },
   async down(queryInterface, Sequelize) {

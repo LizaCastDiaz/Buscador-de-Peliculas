@@ -7,12 +7,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
-        
+        primaryKey: true,  
       },
-      // id_user: {
-      //   type: Sequelize.INTEGER
-      // },
       return_date: {
         type: Sequelize.DATE
       },
@@ -33,7 +29,7 @@ module.exports = {
       id_user: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Users",//borrar s
+          model: "Users",
           key: "id_user"
         },
         onDelete: "cascade",

@@ -18,15 +18,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-    //   id_rental: {
-    //     type: Sequelize.INTEGER,
-    //     references: {
-    //       model: "Rental",
-    //       key: "id_rental"
-    //     },
-    //     onDelete: "cascade",
-    //     onUpdate: "cascade"
-    // }
      });
     
   },

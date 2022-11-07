@@ -10,12 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // User.hasMany(models.Rental, {
-      //   foreignKey:" id_rental"
-      // });
-      // User.belongsTo(models.Role,  {
-      //   foreignKey:"id_role"
-      // });
       User.hasMany(models.Rental);
       User.belongsTo(models.Role);
     }
@@ -41,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     password: DataTypes.STRING ,
     
-    role_id_role: { //borrar
+    role_id_role: { 
       type: DataTypes.INTEGER,
       references: {
         model: "Role",
@@ -55,8 +49,6 @@ module.exports = (sequelize, DataTypes) => {
   {
     sequelize,
     modelName: 'User',
-    // freezeTableName: true,
-    // timestamps: false
   });
    return User;
 };
