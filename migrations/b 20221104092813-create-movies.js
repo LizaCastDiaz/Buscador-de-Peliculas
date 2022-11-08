@@ -33,14 +33,6 @@ module.exports = {
       in_theters: {
         type: Sequelize.BOOLEAN
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
       id_articles: {
         type: Sequelize.INTEGER,
         references: {

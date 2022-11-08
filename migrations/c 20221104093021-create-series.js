@@ -15,8 +15,8 @@ module.exports = {
       genre: {
         type: Sequelize.STRING
       },
-      release_date: {
-        type: Sequelize.DATE
+      year: {
+        type: Sequelize.INTEGER
       },
       rating: {
         type: Sequelize.INTEGER
@@ -32,16 +32,6 @@ module.exports = {
       },
       overview: {
         type: Sequelize.TEXT
-      },
-
-      
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       },
       id_articles: {
         type: Sequelize.INTEGER,

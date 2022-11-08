@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('movies', [
+    await queryInterface.bulkInsert('Movies', [
       {
       id_articles: 1,
       id_movies: 1,
@@ -71,6 +71,8 @@ module.exports = {
       synopsis: "Best friends Sophie and Agatha navigate an enchanted school for young heroes and villains ",
       director: "Paul Feigz",
       duration: 180,
+      in_theters: false
+
     },
     {
       id_articles: 7,
@@ -82,6 +84,7 @@ module.exports = {
       synopsis: "Caleb, a former government assassin in hiding, who resurfaces when his protégé, the equally deadly killer known as Banshee, discovers a bounty has been placed on Caleb's head.",
       director: "Jon Keeyes",
       duration: 162,
+      in_theters: false
     },
     {
       id_articles: 8,
@@ -93,6 +96,7 @@ module.exports = {
       synopsis: "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",
       director: "Francis Ford Coppola",
       duration: 150,
+      in_theters: true
     },
     {
       id_articles: 9,
@@ -103,7 +107,7 @@ module.exports = {
       rating: 8,
       synopsis: " The true story of how businessman Oskar Schindler saved over a thousand Jewish lives from the Nazis while they worked as slaves in his factory during World War II",
       director: "Steven Spielberg",
-      duration: 200,
+      in_theters: false
     },
     {
       id_articles: 10,
@@ -114,7 +118,7 @@ module.exports = {
       rating: 9,
       synopsis: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later. A young Rose boards the ship with her mother and fiancé. Meanwhile, Jack Dawson and Fabrizio De Rossi win third-class tickets aboard the ship. Rose tells the whole story from Titanic's departure through to its death—on its first and last voyage—on April 15, 1912.",
       director: "James Cameron",
-      duration: 190,
+      in_theters: false
     },
     
   ], {});
