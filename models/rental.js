@@ -23,17 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     return_date: DataTypes.DATE,
     rental_date: DataTypes.DATE,
- 
-    
-  //  id_user: {
-  //     type: DataTypes.INTEGER,
-  //     references: {
-  //       model: "Users",
-  //       key: "id_user"
-  //     },
-  //     onDelete: "cascade",
-  //     onUpdate: "cascade"
-  // }
    }, 
 
   
