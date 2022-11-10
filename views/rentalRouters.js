@@ -2,6 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 
-//Importo modelo de datos
+//Import data model
+const RentalControllers = require('../controllers/rentalsControllers')
 
-//End-points CRUD movies
+
+// End-points CRUD rental
+
+
+
+
+//Export
+module.exports = router

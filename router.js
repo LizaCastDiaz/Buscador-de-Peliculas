@@ -16,5 +16,5 @@ router.use('/series', SeriesRouters);
 router.use('/rental', RentalRouters);
 router.use('/user', UserRouters)
 
-//middleware 
+//Export
 module.exports = router;
