@@ -6,7 +6,7 @@ const SeriesControllers = {}; //Create the object controller
 
 
 //CRUD end-points Functions
-
+//------------------ .. ------------------
 // Get top rated series.
 SeriesControllers.getTopRatedSeries = async (req, res) => {
     let resp = await models.series.findAll({
