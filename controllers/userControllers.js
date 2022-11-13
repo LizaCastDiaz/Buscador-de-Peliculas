@@ -19,13 +19,13 @@ UserControllers.getUsers = (req, res) => {
 UserControllers.signUp = async (req, res) => {
     console.log(req.body);
     const userSignUp = await User.create({
-      name: req.body.name,
-      surname: req.body.surname,
-      document: req.body.document,
-      email: req.body.email,
-      password: req.body.password,
+        name: req.body.name,
+        surname: req.body.surname,
+        document: req.body.document,
+        email: req.body.email,
+        password: req.body.password,
     }).catch((err) => {
-      res.status(500).json(err);
+        res.status(500).json(err);
     });
     res.json(userSignUp);
   };
