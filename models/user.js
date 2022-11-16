@@ -35,15 +35,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     password: DataTypes.STRING ,
     
-  //   role_id_role: { 
-  //     type: DataTypes.INTEGER,
-  //     references: {
-  //       model: "Role",
-  //       key: "id_role"
-  //     },
-  //     onDelete: "cascade",
-  //     onUpdate: "cascade"
-  // }
   },
   
   {
@@ -53,4 +44,3 @@ module.exports = (sequelize, DataTypes) => {
    return User;
 };
 
-module.exports = User

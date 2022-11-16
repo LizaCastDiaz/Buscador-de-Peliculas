@@ -6,10 +6,14 @@ const router = express.Router();
 const RentalControllers = require('../controllers/rentalsControllers')
 
 
-// End-points CRUD rental
+//CRUD END-POINTS FUNCTIONS 
+//------------------ .. ------------------
 
-
-
+//all RENTALS
+//Generate a new order
+//Modify order data
+//List all orders of a user
+//List all the orders made in the application (only the admin can do it)
 
 //Export
 module.exports = router

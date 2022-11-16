@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Rental.belongsToMany(models.Articles,) //{ through: 'articlesRental'}); 
+      //Rental.belongsToMany(models.Articles,); 
       Rental.belongsTo(models.User);
     }
   }
@@ -33,4 +33,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Rental;
 };
-module.exports = Rental

@@ -6,11 +6,20 @@ const router = express.Router();
 const SeriesControllers = require('../controllers/seriesControllers')
 
 
+//CRUD END-POINTS FUNCTIONS 
 
+//------------------ .. ------------------
 
-// End-points CRUD Series
-
-
+//GET all series from database
+router.get('/allSeries', SeriesControllers.getAll);
+//GET series by id.
+router.get('/byId', SeriesControllers.getById);
+//GET series by title.
+router.get('/byTitle/:title', SeriesControllers.getByTitle);
+//GET  List of top rated series.
+router.get('/topRated', SeriesControllers.getTopRatedSeries);
+//GET Obtain series that are going to have an episode broadcast in the next 7 days.
+router.get('/byNewEpisode', SeriesControllers.getSeriesNewEpisode);
 
 //Export
 module.exports = router

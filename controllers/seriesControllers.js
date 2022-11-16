@@ -1,25 +1,24 @@
-//Importo modelo de datos
-const models = require ('../models/index')
-const Op = db.Sequelize.Op; // Import  all ORM sequelize functions
+// //Importo modelo de datos
+const models = require('../models/index');
+const { Op } = require('sequelize'); // Import  all ORM sequelize functions
+const router = require('express').Router();
 const SeriesControllers = {}; //Create the object controller
 
 
+//CRUD END-POINTS FUNCTIONS 
+//------------------ .. ------------------
 
-//CRUD end-points Functions
+// Get all series.
+SeriesControllers.getAll = async (req, res) => {
 
-// Get top rated series.
-SeriesControllers.getTopRatedSeries = async (req, res) => {
-    let resp = await models.series.findAll({
-        where: { 
-            maxRate: {
-                [Op.gt]: 9
-            }
-        }
+    models.Series.findAll().then(data => {
+        res.send(data);
     })
-    res.send(resp);
-
-}
-// Get series by id.
+        .catch(err => {res.status(500).send({
+        message: err.message || "Some error occurred while retrieving series."});
+    });
+};
+// Get series by id.  
 SeriesControllers.getById = (req, res) => {
     const id = req.params.id;
 
@@ -27,7 +26,7 @@ SeriesControllers.getById = (req, res) => {
     if (data) {
         res.send(data);
     } else {res.status(404).send({
-        message: `The serie with the ${id} is not avalible`});
+        message: `The serie with the ${id} is not avalible.`});
     }
     })
         .catch(err => {res.status(500).send({message: "Error"});
@@ -36,23 +35,19 @@ SeriesControllers.getById = (req, res) => {
 
 // Get series by title.
 SeriesControllers.getByTitle = async (req, res) => {
-    let title = req.params.title;
-    let consult = `SELECT * FROM series WHERE name LIKE '${title}'`;
-    let result = await series
-        .sequelize
-        .query(consult, {type: series.sequelize.QueryTypes.SELECT});
-    if (result != 0) {
-        res.send(result)
-    } else {
-        res.send(`The series ${title} is not available at Blockbuster database`)
-    }
-};
+    let resp = await models.Series.findAll({ 
+        where: { 
+            title: {[Op.like]: "%"+req.params.title+"%"}
+        }
+     });
+    res.send(resp);
+}
 
 //GET  List of top rated series.
 SeriesControllers.getTopRatedSeries = async (req, res) => {
-    let resp = await models.series.findAll({
+    let resp = await models.Series.findAll({
         where: {
-            maxRate: {
+            rating: {
                 [Op.gt]: 9
             }
         }
@@ -63,7 +58,7 @@ SeriesControllers.getTopRatedSeries = async (req, res) => {
 // Obtain series that are going to have an episode broadcast in the next 7 days.
 SeriesControllers.getSeriesNewEpisode = async (req, res) => {
     try {
-        let resp = await models.series.findAll({
+        let resp = await models.Series.findAll({
             where: { new_episode: true}
             });
         res.send(resp);
@@ -74,5 +69,5 @@ SeriesControllers.getSeriesNewEpisode = async (req, res) => {
 
 
 
-//Export
+// //Export
 module.exports = SeriesControllers;

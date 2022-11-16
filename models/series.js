@@ -36,6 +36,6 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Series;
 };
-module.exports = Series
+
 
 

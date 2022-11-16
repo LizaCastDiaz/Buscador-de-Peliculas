@@ -5,10 +5,14 @@ const router = express.Router();
 const UserControllers = require('../controllers/userControllers')
 
 
+//CRUD END-POINTS FUNCTIONS 
+//------------------ .. ------------------
 
-
-// End-points CRUD ruters
-
+//GET all
+//User Signup
+//User Log in
+//Modify user profile data
+//DELETE a user (can only be done by the admin)
 
 
 //Export

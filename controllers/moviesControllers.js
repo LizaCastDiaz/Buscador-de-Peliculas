@@ -1,16 +1,17 @@
 //Import data models
-const {movies} = require('../models/index')
-const Op = db.Sequelize.Op; // Import  all ORM sequelize functions
-
+const models = require('../models/index');
+const { Op } = require('sequelize'); // Import  all ORM sequelize functions
+const router = require('express').Router();
 const MoviesControllers = {}; //Create the object controller declaration
 
 
 //CRUD END-POINTS FUNCTIONS 
 //------------------ .. ------------------
-//GET all movies from database
+
+//GET all movies 
 MoviesControllers.getAll = async (req, res) => {
 
-    movies.findAll().then(data => {
+    models.Movies.findAll().then(data => {
         res.send(data);
     })
         .catch(err => {res.status(500).send({
@@ -20,40 +21,37 @@ MoviesControllers.getAll = async (req, res) => {
 
 
 //GET movies by Id from database
-MoviesControllers.getById = (req, res) => {
-    const id = req.params.id;
-    movies.findByPk(id).then(data => {
-    
-    if (data) {
-        res.send(data);
-    } else {res.status(404).send({
-        message: `The movie with the ${id} is not avalible.`});
+MoviesControllers.getMoviesById = async (req, res) => {
+    try {
+      let { id } = req.params;
+      let resp = await models.movies.findAll({
+        where: {
+          id_movies: id,
+        },
+      });
+      res.send(resp);
+    } catch (error) {
+      res.send(error);
     }
-    })
-        .catch(err => {res.status(500).send({message: "Error"});
-    });
-};
+  };
+  
 
 
 //GET movies by Title
 MoviesControllers.getByTitle = async (req, res) => {
-    let title = req.params.title;
-    let consult = `SELECT * FROM movies WHERE name LIKE '${title}'`;
-    let result = await movies
-        .sequelize
-        .query(consult, {type: movies.sequelize.QueryTypes.SELECT});
-    if (result != 0) {
-        res.send(result)
-    } else {
-        res.send(`The movie ${title} is not available at Blockbuster database`)
-    }
-};
+    let resp = await models.Movies.findAll({ 
+        where: { 
+            title: {[Op.like]: "%"+req.params.title+"%"}
+        }
+     });
+    res.send(resp);
+}
 
 //GET  List of top rated movies.
 MoviesControllers.getTopRatedMovie = async (req, res) => {
-    let resp = await models.movies.findAll({
+    let resp = await models.Movies.findAll({
         where: {
-            maxRate: {
+            rating: {
                 [Op.gt]: 9
             }
         }
@@ -63,23 +61,21 @@ MoviesControllers.getTopRatedMovie = async (req, res) => {
 }
 
 //GET movies with a certain genre (indicating name, not id).
-MoviesControllers.getByGenre = async (req, res) => {
-    let genre = req.params.genre;
-    let consult = `SELECT title, genre, release_date, rating, synopsis, director, duration FROM movies WHERE genre like '%${genre}%' ORDER BY name ASC`;
-    let result = await movies.sequelize.query(consult, {type: movies.sequelize.QueryTypes.SELECT});
-    if (result != 0) {
-        res.send(result)
-    } else {
-        res.send(`The genre ${genre} is not available at the films database`)
-    }
-};
+MoviesControllers.getMoviesByGenre = async (req, res) => {
+    let resp = await models.Movies.findAll({ 
+        where: { 
+            genre:{[Op.like]: "%"+req.params.genre+"%"}
+        }
+     });
+    res.send(resp);
+}
 
 // Obtain Movies that are going to have a showing in theaters or cinemas.
 
 MoviesControllers.getMoviesInTheaters = async (req,res) =>{
 
     try {
-    let resp = await models.movies.findAll({
+    let resp = await models.Movies.findAll({
         where:{
             in_theters: true
                 }

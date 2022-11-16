@@ -14,6 +14,7 @@ module.exports = {
       synopsis: "Stuck in a small Appalachian town, a young woman’s only escape from the daily grind is playing advanced video games. She is such a good player that a company sends her a new video game system to test…but it has a surprise in store. It unlocks all of her dreams of finding a purpose, romance, and glamour in what seems like a game…but it also puts her and her family in real danger.After being resurrected by a sinister entity, Art the Clown returns to Miles County where he must hunt down and destroy a teenage girl and her younger brother on Halloween night.  As the body count rises, the siblings fight to stay alive while uncovering the true nature of Art's evil intent.",
       director: "Scott B. Smith",
       duration: 120,
+      in_theters: true
 
     },
     {
@@ -26,6 +27,7 @@ module.exports = {
       synopsis: "In this sequel to a new class of warriors emerges among the Samurai clans to keep a sought-after sword from falling into the wrong hands.ter being resurrected by a sinister entity, Art the Clown returns to Miles County where he must hunt down and destroy a teenage girl and her younger brother on Halloween night.  As the body count rises, the siblings fight to stay alive while uncovering the true nature of Art's evil intent.",
       director: "Ron Yuan",
       duration: 150,
+      in_theters: true
     },
     {
       id_articles: 3,
@@ -37,6 +39,7 @@ module.exports = {
       synopsis: "After escaping from an Estonian psychiatric facility, Leena Klammer travels to America by impersonating Esther, the missing daughter of a wealthy family. But when her mask starts to slip, she is put against a mother who will protect her family from the murderous “child” at any cost.",
       director: "William Brent Bell",
       duration: 172,
+      in_theters: true
     },
 
     {
@@ -49,6 +52,7 @@ module.exports = {
       synopsis: "In the follow-up to The Battle At Lake Changjin, brothers Wu Qianli and Wu Wanli undertake a new task for the People's Volunteer Army, defending a bridge part of the American troops' escape route from the advancing Chinese.",
       director: "Tsui Hark",
       duration: 170,
+      in_theters: true
     },
     {
       id_articles: 5,
@@ -60,6 +64,7 @@ module.exports = {
       synopsis: "After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the extinction of the gods, Thor Odinson enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane Foster, who now wields Mjolnir as the Mighty Thor",
       director: "Taika Waititi",
       duration: 132,
+      in_theters: false
     },
     {
       id_articles: 6,

@@ -27,4 +27,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Role;
 };
-module.exports = Role

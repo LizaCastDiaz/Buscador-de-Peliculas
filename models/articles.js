@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-    Articles.belongsToMany(models.Rental);   
-    Articles.hasOne(models.Movies);
-    Articles.hasOne(models.Series)
+    //Articles.belongsToMany(models.Rental, { foreignKey: 'id_rental'} );   
+    Articles.hasOne(models.Movies, { foreignKey: 'id_movies'} );
+    Articles.hasOne(models.Series, { foreignKey: 'id_series'})
     }
   }
   Articles.init({
@@ -20,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-      allowNull: false
+      allowNull: false,
+      
+
     },
   }, 
   {
@@ -30,4 +32,4 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Articles;
 };
-  module.exports = Articles
+ 

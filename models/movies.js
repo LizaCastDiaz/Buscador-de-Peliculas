@@ -2,7 +2,7 @@
 const {
   Model
 } = require('sequelize');
-const { FOREIGNKEYS } = require('sequelize/types/query-types');
+//const { FOREIGNKEYS } = require('sequelize/types/query-types');
 module.exports = (sequelize, DataTypes) => {
   class Movies extends Model {
     /**
@@ -28,13 +28,14 @@ module.exports = (sequelize, DataTypes) => {
     synopsis: DataTypes.TEXT,
     director: DataTypes.STRING,
     duration: DataTypes.STRING, 
-    in_theters: DataTypes.BOOLEAN 
+    in_theters: DataTypes.BOOLEAN    
   },
   {
     sequelize,
     modelName: 'Movies',
+    timestamps: false
+  
    
   });
   return Movies;
 };
-module.exports = Movies

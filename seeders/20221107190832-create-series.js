@@ -8,7 +8,7 @@ module.exports = {
       id_series:1,
       title: "House of the Dragon",
       genre: "Sci-Fi & Fantasy,",
-      year: 2022 ,
+      year: 2022,
       rating: 9,
       seasons: 1,
       episodes: 8,
@@ -68,7 +68,7 @@ module.exports = {
    },
    {
     id_articles: 16,
-    id_series:6,
+    id_series: 6,
     title: "HoGuillermo del Toro's Cabinet of Curiosities use of the Dragon",
       genre: "Drama",
       year: 2021 ,
@@ -92,7 +92,7 @@ module.exports = {
    },
    {
     id_articles: 18,
-    id_series:8,
+    id_series: 8,
     title: "Manifest",
       genre: "Mistery",
       year: 2018 ,
