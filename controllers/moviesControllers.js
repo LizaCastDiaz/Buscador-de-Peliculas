@@ -20,20 +20,33 @@ MoviesControllers.getAll = async (req, res) => {
 };
 
 
-//GET movies by Id from database
+//GET movies by Id 
 MoviesControllers.getMoviesById = async (req, res) => {
-    try {
-      let { id } = req.params;
-      let resp = await models.movies.findAll({
-        where: {
-          id_movies: id,
-        },
-      });
-      res.send(resp);
-    } catch (error) {
-      res.send(error);
-    }
-  };
+try {
+    let { id } = req.params;
+    let resp = await models.Movies.findAll({
+      where: {
+        id_movies: id,
+      },
+    });
+    res.send(resp);
+  } catch (error) {
+    res.send(error);
+  }
+};
+// MoviesControllers.getMoviesById = async (req, res) => {
+//     try {
+//       let { id } = req.params;
+//       let resp = await models.movies.findAll({
+//         where: {
+//           id_movies: id,
+//         },
+//       });
+//       res.send(resp);
+//     } catch (error) {
+//       res.send(error);
+//     }
+//   };
   
 
 

@@ -26,13 +26,14 @@ module.exports = (sequelize, DataTypes) => {
     rating: DataTypes.INTEGER,
     seasons: DataTypes.INTEGER,
     episodes: DataTypes.INTEGER,
-    new_episode: DataTypes.DATE,
+    new_episode: DataTypes.BOOLEAN,
     Overview: DataTypes.TEXT
     
     
   },{  
     sequelize,
     modelName: 'Series',
+    timestamps: false
   });
   return Series;
 };

@@ -1,6 +1,6 @@
 // //Importo modelo de datos
 const models = require('../models/index');
-const { Op } = require('sequelize'); // Import  all ORM sequelize functions
+const { Op, Sequelize  } = require('sequelize'); // Import  all ORM sequelize functions
 const router = require('express').Router();
 const SeriesControllers = {}; //Create the object controller
 
@@ -19,19 +19,19 @@ SeriesControllers.getAll = async (req, res) => {
     });
 };
 // Get series by id.  
-SeriesControllers.getById = (req, res) => {
-    const id = req.params.id;
-
-    series.findByPk(id).then(data => {
-    if (data) {
-        res.send(data);
-    } else {res.status(404).send({
-        message: `The serie with the ${id} is not avalible.`});
-    }
-    })
-        .catch(err => {res.status(500).send({message: "Error"});
-    });
-};
+SeriesControllers.getById = async (req, res) => {
+    try {
+        let { id } = req.params;
+        let resp = await models.Series.findAll({
+          where: {
+            id_series: id,
+          },
+        });
+        res.send(resp);
+      } catch (error) {
+        res.send(error);
+      }
+    };
 
 // Get series by title.
 SeriesControllers.getByTitle = async (req, res) => {
@@ -48,19 +48,25 @@ SeriesControllers.getTopRatedSeries = async (req, res) => {
     let resp = await models.Series.findAll({
         where: {
             rating: {
-                [Op.gt]: 9
+                [Op.gt]: 10
             }
         }
     })
     res.send(resp);
+
 }
+
+
 
 // Obtain series that are going to have an episode broadcast in the next 7 days.
 SeriesControllers.getSeriesNewEpisode = async (req, res) => {
     try {
         let resp = await models.Series.findAll({
-            where: { new_episode: true}
-            });
+            where:{
+                new_episode: true
+                    }
+                }
+            );
         res.send(resp);
     } catch (error) {
         res.send(error);

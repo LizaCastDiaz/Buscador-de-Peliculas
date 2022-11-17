@@ -28,7 +28,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       new_episode: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BOOLEAN
       },
       overview: {
         type: Sequelize.TEXT
