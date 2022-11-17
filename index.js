@@ -2,9 +2,15 @@ const express = require('express'); //agregas express a la variable
 const app = express(); //para ejecutar express
 const db = require('./db/db'); //me traigo la base de datos
 const router = require('./router'); //llamamos al archivo router
-// const { sequelize } = require('./models/index');
-const PORT = 3000;  //puerto de conexion
-
+const PORT = process.env.PORT | 3000;  //puerto de conexion
+//const cors = require("cors"); // Import cors module
+//Config Cors Options
+var corsOptions = {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+  };
 
 //Middleware
 app.use(express.json()); //indicamos al archivo express que utilice los archivos .JSON
