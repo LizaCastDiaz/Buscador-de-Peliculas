@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router()
 
+// Middlewares
+const auth = require('./middlewares/middlewaresAuth');
 
 
 //Importamos Routes definidas en views

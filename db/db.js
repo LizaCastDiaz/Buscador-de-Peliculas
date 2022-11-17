@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize')
-const dotenv = require ('dotenv').config() 
+require('dotenv').config() 
 
 const sequelize = new Sequelize(
     process.env.DB_DATABASE,
@@ -11,4 +11,5 @@ const sequelize = new Sequelize(
     dialect: process.env.DB_DIALECT
 }
 )
+
 module.exports = sequelize

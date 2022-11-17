@@ -18,6 +18,8 @@ SeriesControllers.getAll = async (req, res) => {
         message: err.message || "Some error occurred while retrieving series."});
     });
 };
+
+//-------------------------------------------------------------------------------------
 // Get series by id.  
 SeriesControllers.getById = async (req, res) => {
     try {
@@ -33,6 +35,7 @@ SeriesControllers.getById = async (req, res) => {
       }
     };
 
+//-------------------------------------------------------------------------------------
 // Get series by title.
 SeriesControllers.getByTitle = async (req, res) => {
     let resp = await models.Series.findAll({ 
@@ -43,6 +46,7 @@ SeriesControllers.getByTitle = async (req, res) => {
     res.send(resp);
 }
 
+//-------------------------------------------------------------------------------------
 //GET  List of top rated series.
 SeriesControllers.getTopRatedSeries = async (req, res) => {
     let resp = await models.Series.findAll({
@@ -57,6 +61,8 @@ SeriesControllers.getTopRatedSeries = async (req, res) => {
 }
 
 
+
+//-------------------------------------------------------------------------------------
 
 // Obtain series that are going to have an episode broadcast in the next 7 days.
 SeriesControllers.getSeriesNewEpisode = async (req, res) => {

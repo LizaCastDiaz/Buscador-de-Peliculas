@@ -8,7 +8,7 @@ const MoviesControllers = {}; //Create the object controller declaration
 //CRUD END-POINTS FUNCTIONS 
 //------------------ .. ------------------
 
-//GET all movies 
+//GET ALL MOVIES
 MoviesControllers.getAll = async (req, res) => {
 
     models.Movies.findAll().then(data => {
@@ -19,8 +19,8 @@ MoviesControllers.getAll = async (req, res) => {
     });
 };
 
-
-//GET movies by Id 
+//-------------------------------------------------------------------------------------
+//GET MOVIES BY ID 
 MoviesControllers.getMoviesById = async (req, res) => {
 try {
     let { id } = req.params;
@@ -49,8 +49,9 @@ try {
 //   };
   
 
+//-------------------------------------------------------------------------------------
 
-//GET movies by Title
+//GET MOVIES BY TITLE
 MoviesControllers.getByTitle = async (req, res) => {
     let resp = await models.Movies.findAll({ 
         where: { 
@@ -60,7 +61,9 @@ MoviesControllers.getByTitle = async (req, res) => {
     res.send(resp);
 }
 
-//GET  List of top rated movies.
+//-------------------------------------------------------------------------------------
+
+//GET LIST OF RATED MOVIES.
 MoviesControllers.getTopRatedMovie = async (req, res) => {
     let resp = await models.Movies.findAll({
         where: {
@@ -73,6 +76,8 @@ MoviesControllers.getTopRatedMovie = async (req, res) => {
 
 }
 
+//-------------------------------------------------------------------------------------
+
 //GET movies with a certain genre (indicating name, not id).
 MoviesControllers.getMoviesByGenre = async (req, res) => {
     let resp = await models.Movies.findAll({ 
@@ -82,6 +87,8 @@ MoviesControllers.getMoviesByGenre = async (req, res) => {
      });
     res.send(resp);
 }
+
+//-------------------------------------------------------------------------------------
 
 // Obtain Movies that are going to have a showing in theaters or cinemas.
 

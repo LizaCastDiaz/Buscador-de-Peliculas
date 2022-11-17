@@ -10,13 +10,14 @@ const RentalsControllers = {};//UserController object declaration
 // //------------------ .. ------------------
 
 // //GET all RENTALS
-RentalsControllers.getRentals = (req, res) => {
-    Rental.findAll()
-    .then(data => {
+// RentalsControllers.getRentals = (req, res) => {
+//     Rental.findAll()
+//     .then(data => {
     
-        res.send(data)
-    });
-};
+//         res.send(data)
+//     });
+// };
+
 
 
 
