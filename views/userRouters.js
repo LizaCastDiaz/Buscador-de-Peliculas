@@ -10,19 +10,19 @@ const UserControllers = require('../controllers/userControllers')
 //------------------ .. ------------------
 
 //GET ALL USERS
-router.get('/allUsers', UserControllers.getAll); 
+router.get('/allUsers', UserControllers.getAll); //OK
 
 //GET USER BY ID
-router.get('/getById', UserControllers.getById); 
+router.get('/userId/:id', UserControllers.getById); //EMPTY ARRAY
 
 //USER SIGNUP
-router.post('/signUser', UserControllers.signUp); 
+router.post('/signUp', UserControllers.signUp); 
 
 //USER LOG IN
 router.post('/signIn', UserControllers.signIn); 
 
-//MODIFY USER PROFILE
-router.patch('/allUsers', UserControllers.updateUser); 
+//UPDATE USER PROFILE
+router.patch('/updateUser', UserControllers.updateUser); 
 
 //DELETE USER (can only be done by the admin)
 router.delete('/deleteUsers', UserControllers.deleteUser); 

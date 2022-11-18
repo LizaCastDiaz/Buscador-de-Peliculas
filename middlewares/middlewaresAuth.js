@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
 
 //IF TOKEN EXISTS
 if(!req.headers.authorization) {
-    res.status(401).json({ msg: "Acceso denied" });
+    res.status(401).json({ msg: "Access denied" });
 } else {
 
 // Check the validation of this token

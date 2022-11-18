@@ -1,6 +1,6 @@
 // //Importo modelo de datos
 const router = require("express").Router();
-const { User } = require('../models/index');
+const {User}= require('../models/index');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
@@ -14,68 +14,57 @@ const UserControllers = {}; //Create the object controller
 //------------------ .. ------------------
 
 //GET ALL USERS
-UserControllers.getAll = (req, res) => {
+UserControllers.getAll = async (req, res) => {
 
-    if (req.User.User.rol == "admin") {//WE CHECK IF YOU ARE LOGGED IN AS ADMINISTRATOR
-
-    User.findAll()
-        .then(data => {
+    User.findAll().then(data => {
         res.send(data);
-        })
-        .catch(err => {
-        res.status(500).send({
-        message:
-        err.message || "Something went wrong while trying to access users"
-        });
+    })
+        .catch(err => {res.status(500).send({
+        message: err.message || " error ."});
     });
-}else{
-    res.send({
-        message: `You do not have permissions to view all users. Contact an administrator.`
-    });
-    }
 };
 
 
 //-------------------------------------------------------------------------------------
 
 //GET USER BY ID
-UserControllers.getById = (req, res) => {
-    const id = req.params.id;
-    User.findByPk(id)
-    .then((data) => {
-        if (data) {
-        res.send(data);
-        } else {
-        res.status(404).send({
-        message: `User not found`,
-        });
-        }
-    })
-    .catch((err) => {
-        res.status(500).send({
-        message: "Error",
-        });
+
+UserControllers.getById = async (req, res) => {
+    try {
+        let id = req.params.id;
+
+        let resp = await User.findOne({
+        where: {
+        id_user: id
+        },
     });
+        res.send(resp);
+    } catch (error) {
+        res.send(error);
+    }
 };
+
+
 
 //-------------------------------------------------------------------------------------
 //USER SIGNUP
 
 UserControllers.signUp = async (req, res) => {
     password = bcrypt.hashSync(
-    req.body.password,
-    Number.parseInt(authConfig.rounds)
-);
+      req.body.password,
+      Number.parseInt(authConfig.rounds)
+    );
+    const hash = crypto
     const userCreated = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    rol: req.body.rol,
-}).catch((err) => {
-    res.status(500).json(err);
-});
+      name: req.body.name,
+      email: req.body.email,
+      password: password,
+      role: req.body.rol,
+    }).catch((err) => {
+      res.status(500).json(err);
+    });
     res.json(userCreated);
-};
+  };
 
 
 //-------------------------------------------------------------------------------------
@@ -119,33 +108,32 @@ UserControllers.signUp = async (req, res) => {
 UserControllers.updateUser = (req, res) => {
     const id = req.params.id;
 
-    if (req.user.User.role == "admin" || req.User.User.id == id) {
-    User.update(req.body, {
-        where: { id_role: id },
-    })
+    if (req.user.User.rol == "admin" || req.user.User.id == id) {
+        User.update(req.body, {
+        where: { id: id },
+        })
         .then((num) => {
-        if (num == 1) {
+            if (num == 1) {
             res.send({
-            message: "User update",
+                message: "User update",
             });
-        } else {
+            } else {
             res.send({
-            message: `Not updated ${id}`,
+                message: `Not updated ${id}`,
             });
-        }
+            }
         })
         .catch((err) => {
-        res.status(500).send({
+            res.status(500).send({
             message: "User error",
-        });
+            });
         });
     } else {
-    res.send({
+        res.send({
         message: `Access denied`,
-    });
+        });
     }
-  };
-  
+    };
 
   //-------------------------------------------------------------------------------------
 
@@ -153,8 +141,7 @@ UserControllers.updateUser = (req, res) => {
 UserControllers.deleteUser = (req, res) => {
     const id = req.params.id;
 
-    if (req.User.User.role == "Admin" || req.User.User.id_role == id) {
-
+    if (req.user.User.rol == "Admin" || req.user.User.id == id) {
     User.destroy<({
         where: { id: id_role},
         })
