@@ -6,7 +6,7 @@
 Project carried out for GeeksHubs Academy, in which the API of a video store with home delivery of movies is requested.
 
 
-## COMANDOS BÁSICOS
+## BASIC COMMANDS
 
 ```
 npm init
@@ -30,11 +30,6 @@ sequelize db:seed:undo:all
 ```
 
 ## END-POINTS
-#### Register
-POST - localhost:3000/api/signup - { "name": "root", "email": "root@email.com",  "password": "password" }
-
-#### Login
-POST - localhost:3000/api/signin - { "email": "root@email.com",  "password": "password" }
 
 #### Home
 GET - localhost:3000
@@ -56,10 +51,14 @@ GET - localhost:3000/series/byNewEpisode
 
 
 #### USERS
+#### Register
+POST - localhost:3000/user/signUp - { "name": "root", "email": "root@email.com",  "password": "password" }
+
+#### Login
+POST - localhost:3000/user/signIn - { "email": "root@email.com",  "password": "password" }
+
 GET - localhost:3000/user/allUsers
 GET - localhost:3000/user/userId/:id
-POST - localhost:3000/user/signUp
-POST - localhost:3000/user/signIn
 PATCH - localhost:3000/user/updateUser
 DELETE - localhost:3000/user/deleteUsers
 ```
