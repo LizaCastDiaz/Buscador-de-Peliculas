@@ -68,11 +68,25 @@ DELETE - localhost:3000/user/deleteUsers
 ```
 BUSCADOR-DE-PELICULAS
 └───config
+│   │  auth.js
+│   │  config.js
 │   │  config.json
+│   │  wiston.js
 │   │
+└───controllers
+│   │  AuthControllers.js
+│   │  moviesControllers.js
+│   │  rentalsControllers.js
+│   │  seriesControllers.js
+│   │  userControllers.js
 └───db
 │   │  db.js
+└──logs
+│   │  log-file.log
 │   │
+└───middlewares
+│   │ middlewaresAuth.js 
+│   │  
 └───migrations
 │   │
 │   a 20221104092701-create-articles.js

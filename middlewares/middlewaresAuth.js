@@ -1,33 +1,59 @@
-const jwt = require('jsonwebtoken');
-const authConfig = require('../config/auth');
-const { User } = require('../models/index'); //incluyo user model
+const { isValidUserAndPassword } = require("../services/auth.services.js");
+const jsonwebtoken = require("jsonwebtoken");
 
 
-module.exports = (req, res, next) => {
 
+//COMPROBACÓN DEL TOKEN
 
-//IF TOKEN EXISTS
-if(!req.headers.authorization) {
-    res.status(401).json({ msg: "Access denied" });
-} else {
-
-// Check the validation of this token
-    let token = req.headers.authorization.split(" ")[1];
-
-//TOKEN VALIDATION
-    jwt.verify(token, authConfig.secret, (err, decoded) => {
-
-    if(err) {
-        res.status(500).json({ msg: "Token error", err });
-    } else {          
-    User.findByPk(decoded.user.id, { include: "roles" }).then(User => {
-    //console.log(user.roles);
-        req.user = User;
-            next();
-        });
+const authBearerMiddleware = async (req, res, next) => {
+  const { authorization } = req.headers;
+  const [strategy, jwt] = authorization.split(" ");
+  try {
+    if (strategy.toLowerCase() !== "bearer") {
+      throw new Error("Invalid strategy");
     }
+    console.log("omg")
 
-    })
-}
+    const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
+
+    const created = payload.created;
+
+    const timeElapsed = Date.now() - created;
+    
+
+    const MAX_TIME = Number(process.env.MAX_TIME_JWT_CADUCITY) ||
+      1000 * 60 * 60 * 24 * 30; // 30 days
+    const isValid = timeElapsed && created && MAX_TIME &&
+      (timeElapsed < MAX_TIME);
+    
+
+    // if (!isValid) {
+    //   throw new Error("Token expired");
+    // }
+    
+
+    // expose the payload to the next middlewares and controllers
+    req.auth = payload;
+    console.log("omg5")
+
+    next();
+
+  } catch (error) {
+    res.status(401).json({ message: "You are not authenticated" });
+    return;
+  }
 
 };
+
+//COMPROBACIÓN DE ROL ADMINISTRADOR
+
+const isValidRoleAdmin =  (req, res, next) => {
+  console.log(req.auth?.role);
+  if (req.auth?.role === 1) {
+    next();
+  } else {
+    res.status(403).json({ message: "You are not authorized" });
+  }
+}
+
+module.exports = { authBearerMiddleware, isValidRoleAdmin};

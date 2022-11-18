@@ -15,7 +15,7 @@ const UserRouters = require('./views/userRouters')
 //Routers
 router.use('/movies', MoviesRouters);
 router.use('/series', SeriesRouters);
-router.use('/rental', auth, RentalRouters);
+router.use('/rental', RentalRouters);
 router.use('/user', UserRouters)
 
 //Export

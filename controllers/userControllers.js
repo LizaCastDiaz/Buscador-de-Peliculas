@@ -28,7 +28,6 @@ UserControllers.getAll = async (req, res) => {
 //-------------------------------------------------------------------------------------
 
 //GET USER BY ID
-
 UserControllers.getById = async (req, res) => {
     try {
         let id = req.params.id;
@@ -68,7 +67,7 @@ UserControllers.signUp = async (req, res) => {
 
 
 //-------------------------------------------------------------------------------------
-  //USER LOG IN
+  //USER SIGN IN
   UserControllers.signIn = (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
@@ -103,37 +102,75 @@ UserControllers.signUp = async (req, res) => {
 
 
 //-------------------------------------------------------------------------------------
- 
-// UPDATE USER
-UserControllers.updateUser = (req, res) => {
-    const id = req.params.id;
 
-    if (req.user.User.rol == "admin" || req.user.User.id == id) {
-        User.update(req.body, {
-        where: { id: id },
-        })
-        .then((num) => {
-            if (num == 1) {
-            res.send({
-                message: "User update",
-            });
-            } else {
-            res.send({
-                message: `Not updated ${id}`,
-            });
+// UPDATE USER
+
+UserControllers.updateUser= async (req, res) => {
+    try {
+        let data = req.body;
+        let findUser = User.findOne({
+            where: {
+                email: req.auth.email
             }
         })
-        .catch((err) => {
-            res.status(500).send({
-            message: "User error",
-            });
-        });
-    } else {
-        res.send({
-        message: `Access denied`,
-        });
-    }
-    };
+            
+        
+        console.log(findUser)      
+    }catch (error) {
+            res.send(error);
+        
+    }}  
+
+
+    // try {
+
+    //     let data = req.body;
+    //     if (data.password) {   
+    //         data.password = bcrypt.hashSync(data.password, Number.parseInt(authConfig.rounds || 10));
+    //     }
+
+    //     let user = await User.update(data, {
+    //         where: { password: req.body.password}
+
+    //     });
+    //     res.send({
+    //         token: generateToken(user),
+    //         message: 'User updated successfully.'
+    //     })
+
+    // } catch (error) {
+    //     res.send(error);
+    // }
+//};
+// UserControllers.updateUser = (req, res) => {
+//     const id = req.params.id;
+
+//     if (req.user.User.rol == "admin" || req.user.User.id == id) {
+//         User.update(req.body, {
+//         where: { id: id },
+//         })
+//         .then((num) => {
+//             if (num == 1) {
+//             res.send({
+//                 message: "User update",
+//             });
+//             } else {
+//             res.send({
+//                 message: `Not updated ${id}`,
+//             });
+//             }
+//         })
+//         .catch((err) => {
+//             res.status(500).send({
+//             message: "User error",
+//             });
+//         });
+//     } else {
+//         res.send({
+//         message: `Access denied`,
+//         });
+//     }
+//     };
 
   //-------------------------------------------------------------------------------------
 
