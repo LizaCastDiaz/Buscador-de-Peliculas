@@ -4,7 +4,7 @@
 Project carried out for GeeksHubs Academy, in which the API of a video store with home delivery of movies is requested.
 
 
-## COMANDOS BÁSICOS
+## BASIC COMMANDS:
 
 ```
 npm init
@@ -27,7 +27,8 @@ sequelize db:seed:undo
 sequelize db:seed:undo:all
 ```
 
-## END-POINTS
+## END-POINTS:
+```
 #### Register
 POST - localhost:3000/auth/logIn - { "name": "root", "email": "root@email.com",  "password": "password","RoleIdRole: "Admin" }
 
@@ -70,8 +71,7 @@ PUT - localhost:3000/update/:id_order
 
 ```
 
-
-### Directory & file structures of the proyect
+### Directory & file structures of the proyect:
 ```
 BUSCADOR-DE-PELICULAS
 └───config
@@ -131,13 +131,15 @@ BUSCADOR-DE-PELICULAS
 │   │
 └───router.js
 ```
-## Tecnologies
 
-- JavaScript
-- Sequelize
-- MySQL
-- NodeJS
-- ExpressJS
+## Used tecnologies:
 
+```
+* [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) 
+* [Sequelize](https://sequelize.org/) 
+* [MySQL](https://www.mysql.com/) 
+* [NodeJS](https://nodejs.org/es/)
+* [ExpressJS](https://expressjs.com/)
 
+```
 
