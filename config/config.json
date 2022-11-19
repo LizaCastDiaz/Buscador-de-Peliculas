@@ -1,11 +1,11 @@
 {
   "development": {
     "username": "root",
-    "password": "yWobwUqVctqFKPnJr8fR",
+    "password": "root",
     "database": "Blockbuster",
-    "host": "containers-us-west-26.railway.app",
+    "host": "127.0.0.1",
     "dialect": "mysql",
-    "port": "5623", 
+    "port": "3306", 
     "define":{
       "timestamps":false
     }

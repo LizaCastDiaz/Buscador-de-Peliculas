@@ -1,12 +1,10 @@
 # Blockbuster Api
 
 ## Movie movie finder
-
-
 Project carried out for GeeksHubs Academy, in which the API of a video store with home delivery of movies is requested.
 
 
-## BASIC COMMANDS
+## COMANDOS BÁSICOS
 
 ```
 npm init
@@ -30,6 +28,11 @@ sequelize db:seed:undo:all
 ```
 
 ## END-POINTS
+#### Register
+POST - localhost:3000/auth/logIn - { "name": "root", "email": "root@email.com",  "password": "password","RoleIdRole: "Admin" }
+
+#### Login
+POST - localhost:3000/auth/register - { "email": "root@email.com",  "password": "password", "RoleIdRole: ""RoleIdRole: "Admin"}
 
 #### Home
 GET - localhost:3000
@@ -51,16 +54,12 @@ GET - localhost:3000/series/byNewEpisode
 
 
 #### USERS
-#### Register
-POST - localhost:3000/user/signUp - { "name": "root", "email": "root@email.com",  "password": "password" }
-
-#### Login
-POST - localhost:3000/user/signIn - { "email": "root@email.com",  "password": "password" }
-
 GET - localhost:3000/user/allUsers
 GET - localhost:3000/user/userId/:id
-PATCH - localhost:3000/user/updateUser
-DELETE - localhost:3000/user/deleteUsers
+POST - localhost:3000/auth/logIn
+POST - localhost:3000/auth/register
+PATCH - localhost:3000/user/updateUser/:email
+DELETE - localhost:3000/user/deleteUsers/:email
 ```
 
 
@@ -123,7 +122,6 @@ BUSCADOR-DE-PELICULAS
 └───package.json
 │   │
 └───router.js
-
 ```
 ## Tecnologies
 
