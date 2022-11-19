@@ -12,7 +12,9 @@ const jsonwebtoken = require ("jsonwebtoken");
 
 async function authRegisterController(req, res) {
     const body = req.body;
-    // validate password
+
+
+    // VALIDATE PASSWORD
     try {
       assertValidPasswordService(body.password);
     } catch (error) {
@@ -20,7 +22,10 @@ async function authRegisterController(req, res) {
       res.status(400).json({ message: "Invalid password: " + error.message });
       return;
     }
-    // validate email is valid
+
+//-------------------------------------------------------------------------------------
+
+    // VALIDATE IF EMAIL IS INVALID
     try {
       assertEmailIsValid(body.email);
     } catch (error) {
@@ -28,7 +33,10 @@ async function authRegisterController(req, res) {
       res.status(400).json({ message: "Email is invalid: " + error.message });
       return;
     }
-    // validate email is unique
+
+//-------------------------------------------------------------------------------------
+
+    // VALIDATE A UNIQUE EMAIL
     try {
       await assertEmailIsUniqueService(body.email);
     } catch (error) {
@@ -38,7 +46,9 @@ async function authRegisterController(req, res) {
       });
       return;
     }
-    // save user
+
+    //-------------------------------------------------------------------------------------
+    // SAVE USER
     try {
       const userCreated = await createUserService(body);
       delete userCreated.password;
@@ -50,6 +60,10 @@ async function authRegisterController(req, res) {
       res.status(500).json({ message: error.message });
     }
   }
+
+
+//-------------------------------------------------------------------------------------
+// VALIDATE IF PASSWORD OR EMAIL IS INCONRRECT
 
   async function authLoginController(req, res) {
     

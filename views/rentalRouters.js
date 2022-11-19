@@ -1,19 +1,26 @@
 const express = require('express');
 const router = express.Router();
 
+const { isValidRoleAdmin, authBearerMiddleware, isValidUser } = require("../middlewares/middlewaresAuth")
+
 
 //Import data model
-const RentalControllers = require('../controllers/rentalsControllers')
+const RentalsControllers = require('../controllers/rentalsControllers')
 
 
 //CRUD END-POINTS FUNCTIONS 
 //------------------ .. ------------------
 
-//all RENTALS
-//Generate a new order
-//Modify order data
-//List all orders of a user
-//List all the orders made in the application (only the admin can do it)
+
+//GET ALL RENTALS (only admin)
+router.get('/rentals/getAll', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.getAllRentals); 
+//GET a LIST ALL THE ORDERS OF A USER
+router.get('/rentals/:email',authBearerMiddleware, isValidUser,  RentalsControllers.getRentalsFromUser); 
+//POST GENERATE A NEW ORDER
+router.post('/rentals/newRental', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.NewRental); 
+//MODIFY ORDER
+router.put('/update/:id_order', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.updateRentalById); 
+
 
 //Export
 module.exports = router

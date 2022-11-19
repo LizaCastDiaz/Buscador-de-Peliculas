@@ -60,6 +60,14 @@ POST - localhost:3000/auth/logIn
 POST - localhost:3000/auth/register
 PATCH - localhost:3000/user/updateUser/:email
 DELETE - localhost:3000/user/deleteUsers/:email
+
+
+#### RENTAL
+GET - localhost:3000/rentals/getAll
+GET - localhost:3000/rentals/:email
+POST - localhost:3000/rentals/newRental
+PUT - localhost:3000/update/:id_order
+
 ```
 
 

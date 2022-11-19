@@ -17,7 +17,7 @@ router.get('/id/:id', SeriesControllers.getById); //OK
 //GET series by title.
 router.get('/byTitle/:title', SeriesControllers.getByTitle);//OK
 //GET  List of top rated series.
-router.get('/rating', SeriesControllers.getTopRatedSeries); //EMPTY ARRAY
+router.get('/topRated', SeriesControllers.getTopRatedSeries); //EMPTY ARRAY
 //GET Obtain series that are going to have an episode broadcast in the next 7 days.
 router.get('/byNewEpisode', SeriesControllers.getSeriesNewEpisode ); //EMPTY ARRAY
 //Export

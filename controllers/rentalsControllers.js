@@ -1,66 +1,90 @@
 // //Importo modelo de datos
-const models = require('../models/index');
+const {Rental} = require('../models/index');
 const { Op } = require('sequelize'); // Import  all ORM sequelize functions
 const router = require('express').Router();
-const RentalsControllers = {};//UserController object declaration
+const RentalsControllers = {};// object declaration
 
 
 
-// //CRUD end-points Functions
+//CRUD END-POINTS FUNCTIONS 
 // //------------------ .. ------------------
 
-// //GET all RENTALS
-// RentalsControllers.getRentals = (req, res) => {
-//     Rental.findAll()
-//     .then(data => {
-    
-//         res.send(data)
-//     });
-// };
 
-
-
-
-// //Generate a new order
-
-
-
-
- //Modify order data
-
-
-
-
- //List all orders of a user
-
- RentalsControllers.myRentals = async(req,res) => {
-    const { authorization } = req.headers;
-      try {
-        let  id  = payrental.id_user;
-        let resp = await models.rental.findAll({
-          where: {
-            id: useid,
-          },
-        });
-        res.send(resp);
-      }catch(error){
-        res.send(error)
-      }
+//ALL RENTALS
+RentalsControllers.getAllRentals = async (req, res) => {
+  try {
+      let resp = await Rental.findAll({
+      })
+          .then(resp => {
+              res.send(resp)
+          })
+  } catch (err) {
+      res.send(err)
+      console.log(err)
   }
-
-
-
- //List all the orders made in the application (only the admin can do it)
-
-RentalsControllers.wholeRentalsApp = async (req,res) => {
-    try {
-        let resp = await models.rental.findAll();
-        res.send(resp);
-    } catch (error) {
-        res.send(error)
-}
 }
 
+//-------------------------------------------------------------------------------------
+//LIST ALL THE ORDERS OF A USER
+RentalsControllers.getRentalsFromUser = async (req, res) => {
+  try{
+      let email = req.params.email
+      console.log(email)
+      let resp = await User.findAll({
+          where: { email: email},
+          include: {
+              model: Rental,
+              attributes: ['id_rental', 'return_date', "rental_date"]
+          },
+          attributes: ['email', 'name']
+      })
+      res.send(resp)
+  } catch (error) {
+      res.send(error)
+      console.log(error)
+  }
+}
+
+//-------------------------------------------------------------------------------------
+//GENERATE A NEW ORDER
+RentalsControllers.NewRental = async (req, res) => {
+  try {
+      let data = req.body
+      let resp = await Rental.create({
+          startedAt: data.startedAt,
+          endedAt: data.endedAt,
+          userMail: data.userMail,
+          articleIdArticle: data.articleIdArticle
+
+      })
+
+      res.send(resp)
+  } catch (error) {
+      res.send(error)
+  }
+}
+
+//-------------------------------------------------------------------------------------
+//MODIFY ORDER by ID
+RentalsControllers.updateRentalById = async (req, res) => {
+  try {
+      let data = req.body
+      let resp = await Rental.update(
+          {
+              startedAt: data.startedAt,
+          endedAt: data.endedAt,
+          },
+          {
+              where: { id_rental: data.id_rental }
+          }
+      )
+
+      res.send(resp)
+
+  } catch (err) {
+      res.send(err)
+  }
+}
 
 
 // //Export

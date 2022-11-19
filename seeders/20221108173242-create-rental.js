@@ -10,7 +10,7 @@ module.exports = {
           return_date: "2022-09-01",
           rental_date: "2022-10-01",
           id_user: 2,
-          id_articles:1
+          id_articles: 1
 
         },
         

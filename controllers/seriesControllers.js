@@ -52,14 +52,13 @@ SeriesControllers.getTopRatedSeries = async (req, res) => {
     let resp = await models.Series.findAll({
         where: {
             rating: {
-                [Op.gt]: 10
+                [Op.gt]: 9
             }
         }
     })
     res.send(resp);
 
 }
-
 
 
 //-------------------------------------------------------------------------------------
