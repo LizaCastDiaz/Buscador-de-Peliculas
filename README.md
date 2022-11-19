@@ -28,6 +28,7 @@ sequelize db:seed:undo:all
 ```
 
 ## END-POINTS:
+
 ```
 #### Register
 POST - localhost:3000/auth/logIn - { "name": "root", "email": "root@email.com",  "password": "password","RoleIdRole: "Admin" }
@@ -37,33 +38,39 @@ POST - localhost:3000/auth/register - { "email": "root@email.com",  "password": 
 
 #### Home
 GET - localhost:3000
+```
 
 #### MOVIES
+```
 GET - localhost:3000/movies/allMovies
 GET - localhost:3000/movies/id/:id
 GET - localhost:3000/movies/byTitle/:title
 GET - localhost:3000/movies/topRated
 GET - localhost:3000/movies/genre/:genre
 GET - localhost:3000/movies/inTheters
+```
 
 #### SERIES
+```
 GET - localhost:3000/series/allSeries
 GET - localhost:3000/series/id/:id
 GET - localhost:3000/series/byTitle/:title
 GET - localhost:3000/series/rating
 GET - localhost:3000/series/byNewEpisode
-
+```
 
 #### USERS
+```
 GET - localhost:3000/user/allUsers
 GET - localhost:3000/user/userId/:id
 POST - localhost:3000/auth/logIn
 POST - localhost:3000/auth/register
 PATCH - localhost:3000/user/updateUser/:email
 DELETE - localhost:3000/user/deleteUsers/:email
-
+```
 
 #### RENTAL
+```
 GET - localhost:3000/rentals/getAll
 GET - localhost:3000/rentals/:email
 POST - localhost:3000/rentals/newRental
@@ -135,11 +142,11 @@ BUSCADOR-DE-PELICULAS
 ## Used tecnologies:
 
 ```
-* [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) 
-* [Sequelize](https://sequelize.org/) 
-* [MySQL](https://www.mysql.com/) 
-* [NodeJS](https://nodejs.org/es/)
-* [ExpressJS](https://expressjs.com/)
+* JavaScript: (https://developer.mozilla.org/es/docs/Web/JavaScript) 
+* Sequelize:(https://sequelize.org/) 
+* MySQL: (https://www.mysql.com/) 
+* NodeJS: (https://nodejs.org/es/)
+* ExpressJS: (https://expressjs.com/)
 
 ```
 
