@@ -11,10 +11,10 @@ const UserControllers = require('../controllers/userControllers')
 //------------------ .. ------------------
 
 //GET ALL USERS
-router.get('/allUsers',authBearerMiddleware, isValidRoleAdmin, UserControllers.getAll); //OK
+router.get('/allUsers', authBearerMiddleware, isValidRoleAdmin, UserControllers.getAll); //OK
 
 //GET USER BY ID
-router.get('/userId/:id', UserControllers.getById); //EMPTY ARRAY
+router.get('/userId/:id', UserControllers.getById);
 
 // //USER SIGNUP
 // router.post('/signUp', UserControllers.signUp); 
@@ -23,10 +23,10 @@ router.get('/userId/:id', UserControllers.getById); //EMPTY ARRAY
 // router.post('/signIn', UserControllers.signIn); 
 
 //UPDATE USER PROFILE
-router.patch('/updateUser/:email', authBearerMiddleware, isValidRoleAdmin, UserControllers.updateUser); 
+router.patch('/updateUser/:email', authBearerMiddleware, isValidRoleAdmin, UserControllers.updateUser);
 
 //DELETE USER (can only be done by the admin)
-router.delete('/deleteUsers/:email', authBearerMiddleware, isValidRoleAdmin,UserControllers.deleteUser); 
+router.delete('/deleteUsers/:email', authBearerMiddleware, isValidRoleAdmin, UserControllers.deleteUser);
 
 
 

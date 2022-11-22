@@ -14,25 +14,27 @@ MoviesControllers.getAll = async (req, res) => {
     models.Movies.findAll().then(data => {
         res.send(data);
     })
-        .catch(err => {res.status(500).send({
-        message: err.message || "Some error occurred while retrieving movies."});
-    });
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving movies."
+            });
+        });
 };
 
 //-------------------------------------------------------------------------------------
 //GET MOVIES BY ID 
 MoviesControllers.getMoviesById = async (req, res) => {
-try {
-    let { id } = req.params;
-    let resp = await models.Movies.findAll({
-      where: {
-        id_movies: id,
-      },
-    });
-    res.send(resp);
-  } catch (error) {
-    res.send(error);
-  }
+    try {
+        let { id } = req.params;
+        let resp = await models.Movies.findAll({
+            where: {
+                id_movies: id,
+            },
+        });
+        res.send(resp);
+    } catch (error) {
+        res.send(error);
+    }
 };
 // MoviesControllers.getMoviesById = async (req, res) => {
 //     try {
@@ -47,17 +49,17 @@ try {
 //       res.send(error);
 //     }
 //   };
-  
+
 
 //-------------------------------------------------------------------------------------
 
 //GET MOVIES BY TITLE
 MoviesControllers.getByTitle = async (req, res) => {
-    let resp = await models.Movies.findAll({ 
-        where: { 
-            title: {[Op.like]: "%"+req.params.title+"%"}
+    let resp = await models.Movies.findAll({
+        where: {
+            title: { [Op.like]: "%" + req.params.title + "%" }
         }
-     });
+    });
     res.send(resp);
 }
 
@@ -80,11 +82,11 @@ MoviesControllers.getTopRatedMovie = async (req, res) => {
 
 //GET movies with a certain genre (indicating name, not id).
 MoviesControllers.getMoviesByGenre = async (req, res) => {
-    let resp = await models.Movies.findAll({ 
-        where: { 
-            genre:{[Op.like]: "%"+req.params.genre+"%"}
+    let resp = await models.Movies.findAll({
+        where: {
+            genre: { [Op.like]: "%" + req.params.genre + "%" }
         }
-     });
+    });
     res.send(resp);
 }
 
@@ -92,19 +94,20 @@ MoviesControllers.getMoviesByGenre = async (req, res) => {
 
 // Obtain Movies that are going to have a showing in theaters or cinemas.
 
-MoviesControllers.getMoviesInTheaters = async (req,res) =>{
+MoviesControllers.getMoviesInTheaters = async (req, res) => {
 
     try {
-    let resp = await models.Movies.findAll({
-        where:{
-            in_theters: true
-                }
+        let resp = await models.Movies.findAll({
+            where: {
+                in_theters: true
             }
+        }
         );
         res.send(resp);
     } catch (error) {
-        res.send(error);        
-}}
+        res.send(error);
+    }
+}
 
 
 //Export

@@ -1,6 +1,6 @@
 const { isValidUserAndPassword } = require("../services/authServices");
 const jsonwebtoken = require("jsonwebtoken");
-const {User} = require("../models/index")
+const { User } = require("../models/index")
 
 const authBasicMiddleware = async (req, res, next) => {
   const { authorization } = req.headers;
@@ -28,16 +28,15 @@ const authBearerMiddleware = async (req, res, next) => {
   const { authorization } = req.headers;
   // 'Bearer 1234'.split(' ') -> ['Bearer','1234']
   const [strategy, jwt] = authorization.split(" ");
-  console.log(payload)
+  console.log({ authorization })
+
   try {
     if (strategy.toLowerCase() !== "bearer") {
       throw new Error("Invalid strategy");
     }
     const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
-
-
     const created = payload.created;
-
+    console.log(payload)
     const timeElapsed = Date.now() - created;
     const MAX_TIME = Number(process.env.MAX_TIME_JWT_CADUCITY) ||
       1000 * 60 * 60 * 24 * 30; // 30 days
@@ -86,6 +85,7 @@ const isValidUser = async (req, res, next) => {
   const { authorization } = req.headers;
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
+  console.log(payload)
   let email = req.params.email
   console.log(req.params.email)
 

@@ -18,7 +18,7 @@ router.use('/movies', MoviesRouters);
 router.use('/series', SeriesRouters);
 router.use('/rental', RentalRouters);
 router.use('/user', UserRouters);
-router.use("/auth",authRoutes);
+router.use("/auth", authRoutes);
 
 //Export
 module.exports = router;

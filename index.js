@@ -8,7 +8,7 @@ const router = require('./router.js');//llamamos al archivo router //puerto de c
 //const cors = require("cors"); // Import cors module
 
 
-const PORT = process.env.PORT | 3000;  //puerto de conexion
+const PORT = process.env.PORT | 6000;  //puerto de conexion
 
 
 //Config Cors Options
@@ -21,22 +21,22 @@ const PORT = process.env.PORT | 3000;  //puerto de conexion
 
 //Middleware
 app.use(express.json()); //indicamos al archivo express que utilice los archivos .JSON
-app.use(morgan('combined' , {stream: logger.stream}));
+app.use(morgan('combined', { stream: logger.stream }));
 // app.use(cors(corsOptions)); //Add CORS Middleware
 
 
 
 //Routers
 app.use(router);
-app.get('/', (req, res) => {res.send('Welcome');});
+app.get('/', (req, res) => { res.send('Welcome'); });
 
 
 //Connecting to the database
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`El servidor esta up y alojado en el puerto => ${PORT}`.bgGreen.red);
     // sequelize.sync({force:true})
     //db.authenticate()
-    db.authenticate().then(()=> {
+    db.authenticate().then(() => {
         console.log("Conectado a la base de datos");
     }).catch(error => {
         console.log('Se ha producido un error: ' + error)

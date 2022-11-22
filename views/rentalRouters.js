@@ -13,13 +13,13 @@ const RentalsControllers = require('../controllers/rentalsControllers')
 
 
 //GET ALL RENTALS (only admin)
-router.get('/rentals/getAll', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.getAllRentals); 
+router.get('/rentals/getAll', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.getAllRentals);
 //GET a LIST ALL THE ORDERS OF A USER
-router.get('/rentals/:email',authBearerMiddleware, isValidUser,  RentalsControllers.getRentalsFromUser); 
+router.get('/rentals/:email', authBearerMiddleware, isValidUser, RentalsControllers.getRentalsFromUser);
 //POST GENERATE A NEW ORDER
-router.post('/rentals/newRental', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.NewRental); 
+router.post('/rentals/newRental', authBearerMiddleware, RentalsControllers.NewRental);
 //MODIFY ORDER
-router.put('/update/:id_order', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.updateRentalById); 
+router.put('/update/:id_order', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.updateRentalById);
 
 
 //Export

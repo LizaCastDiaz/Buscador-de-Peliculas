@@ -21,8 +21,11 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
+    email: DataTypes.STRING,
+    id_user: DataTypes.INTEGER,
     return_date: DataTypes.DATE,
     rental_date: DataTypes.DATE,
+    id_articles: DataTypes.INTEGER
    }, 
 
   

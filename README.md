@@ -29,15 +29,21 @@ sequelize db:seed:undo:all
 
 ## END-POINTS:
 
+#### Login
+```
+POST - localhost:3000/auth/logIn - { "email": "root@email.com",  "password": "password","RoleIdRole: "Admin" }
+
 ```
 #### Register
-POST - localhost:3000/auth/logIn - { "name": "root", "email": "root@email.com",  "password": "password","RoleIdRole: "Admin" }
+```
+POST - localhost:3000/auth/register - { "name", "surname", email": "root@email.com",  "password": "password", "RoleIdRole: ""RoleIdRole: "Admin"}
 
-#### Login
-POST - localhost:3000/auth/register - { "email": "root@email.com",  "password": "password", "RoleIdRole: ""RoleIdRole: "Admin"}
+```
 
 #### Home
+```
 GET - localhost:3000
+
 ```
 
 #### MOVIES
@@ -48,6 +54,7 @@ GET - localhost:3000/movies/byTitle/:title
 GET - localhost:3000/movies/topRated
 GET - localhost:3000/movies/genre/:genre
 GET - localhost:3000/movies/inTheters
+
 ```
 
 #### SERIES
@@ -57,6 +64,7 @@ GET - localhost:3000/series/id/:id
 GET - localhost:3000/series/byTitle/:title
 GET - localhost:3000/series/rating
 GET - localhost:3000/series/byNewEpisode
+
 ```
 
 #### USERS
@@ -67,6 +75,7 @@ POST - localhost:3000/auth/logIn
 POST - localhost:3000/auth/register
 PATCH - localhost:3000/user/updateUser/:email
 DELETE - localhost:3000/user/deleteUsers/:email
+
 ```
 
 #### RENTAL

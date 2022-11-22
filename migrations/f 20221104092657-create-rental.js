@@ -7,7 +7,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,  
+        primaryKey: true,
       },
       return_date: {
         type: Sequelize.DATE
@@ -15,8 +15,8 @@ module.exports = {
       rental_date: {
         type: Sequelize.DATE
       },
-     
-  
+
+
       id_user: {
         type: Sequelize.INTEGER,
         references: {
@@ -25,16 +25,16 @@ module.exports = {
         },
         onDelete: "cascade",
         onUpdate: "cascade"
-    },
-    id_articles: {
-      type: Sequelize.INTEGER,
-      references: {
-        model: "Articles",
-        key: "id_articles"
       },
-      onDelete: "cascade",
-      onUpdate: "cascade"
-  }
+      id_articles: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Articles",
+          key: "id_articles"
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade"
+      }
 
     });
   },

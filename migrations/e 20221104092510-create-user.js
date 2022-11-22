@@ -18,12 +18,13 @@ module.exports = {
       document: {
         type: Sequelize.STRING
       },
-      email:  { type: Sequelize.STRING
+      email: {
+        type: Sequelize.STRING
       },
       password: {
         type: Sequelize.STRING
       },
-      
+
       id_role: {
         type: Sequelize.STRING,
         references: {
@@ -32,10 +33,10 @@ module.exports = {
         },
         onDelete: "cascade",
         onUpdate: "cascade"
-    },
+      },
     });
-    
-  
+
+
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Users');

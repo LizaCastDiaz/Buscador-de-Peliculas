@@ -41,11 +41,11 @@ module.exports = {
         },
         onDelete: "cascade",
         onUpdate: "cascade"
-    }
-      
-    }); 
+      }
+
+    });
   },
-    
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Movies');
   }

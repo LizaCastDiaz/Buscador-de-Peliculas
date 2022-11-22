@@ -1,6 +1,6 @@
 // //Importo modelo de datos
 const models = require('../models/index');
-const { Op, Sequelize  } = require('sequelize'); // Import  all ORM sequelize functions
+const { Op, Sequelize } = require('sequelize'); // Import  all ORM sequelize functions
 const router = require('express').Router();
 const SeriesControllers = {}; //Create the object controller
 
@@ -14,9 +14,11 @@ SeriesControllers.getAll = async (req, res) => {
     models.Series.findAll().then(data => {
         res.send(data);
     })
-        .catch(err => {res.status(500).send({
-        message: err.message || "Some error occurred while retrieving series."});
-    });
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving series."
+            });
+        });
 };
 
 //-------------------------------------------------------------------------------------
@@ -25,24 +27,24 @@ SeriesControllers.getById = async (req, res) => {
     try {
         let { id } = req.params;
         let resp = await models.Series.findAll({
-          where: {
-            id_series: id,
-          },
+            where: {
+                id_series: id,
+            },
         });
         res.send(resp);
-      } catch (error) {
+    } catch (error) {
         res.send(error);
-      }
-    };
+    }
+};
 
 //-------------------------------------------------------------------------------------
 // Get series by title.
 SeriesControllers.getByTitle = async (req, res) => {
-    let resp = await models.Series.findAll({ 
-        where: { 
-            title: {[Op.like]: "%"+req.params.title+"%"}
+    let resp = await models.Series.findAll({
+        where: {
+            title: { [Op.like]: "%" + req.params.title + "%" }
         }
-     });
+    });
     res.send(resp);
 }
 
@@ -67,11 +69,11 @@ SeriesControllers.getTopRatedSeries = async (req, res) => {
 SeriesControllers.getSeriesNewEpisode = async (req, res) => {
     try {
         let resp = await models.Series.findAll({
-            where:{
+            where: {
                 new_episode: true
-                    }
-                }
-            );
+            }
+        }
+        );
         res.send(resp);
     } catch (error) {
         res.send(error);

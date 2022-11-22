@@ -64,8 +64,8 @@ module.exports = {
       {
         id_articles: 20
       },
-     
-   
+
+
     ], {});
 
   },
