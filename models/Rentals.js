@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     rental_date: DataTypes.DATE,
     id_articles: DataTypes.INTEGER
    }, 
-
+   
   
   {
     sequelize,

@@ -15,7 +15,7 @@ const RentalsControllers = require('../controllers/rentalsControllers')
 //GET ALL RENTALS (only admin)
 router.get('/rentals/getAll', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.getAllRentals);
 //GET a LIST ALL THE ORDERS OF A USER
-router.get('/rentals/:email', authBearerMiddleware, isValidUser, RentalsControllers.getRentalsFromUser);
+router.get('/rentals/:email', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.getRentalsFromUser);
 //POST GENERATE A NEW ORDER
 router.post('/rentals/newRental', authBearerMiddleware, RentalsControllers.NewRental);
 //MODIFY ORDER

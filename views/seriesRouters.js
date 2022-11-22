@@ -11,14 +11,14 @@ const SeriesControllers = require('../controllers/seriesControllers')
 //------------------ .. ------------------
 
 //GET all series from database
-router.get('/allSeries', SeriesControllers.getAll); //OK
+router.get('/allSeries', SeriesControllers.getAll); 
 //GET series by id.
-router.get('/id/:id', SeriesControllers.getById); //OK
+router.get('/id/:id', SeriesControllers.getById); 
 //GET series by title.
-router.get('/byTitle/:title', SeriesControllers.getByTitle);//OK
+router.get('/byTitle/:title', SeriesControllers.getByTitle);
 //GET  List of top rated series.
-router.get('/topRated', SeriesControllers.getTopRatedSeries); //EMPTY ARRAY
+router.get('/topRated', SeriesControllers.getTopRatedSeries); 
 //GET Obtain series that are going to have an episode broadcast in the next 7 days.
-router.get('/byNewEpisode', SeriesControllers.getSeriesNewEpisode); //EMPTY ARRAY
+router.get('/byNewEpisode', SeriesControllers.getSeriesNewEpisode); 
 //Export
 module.exports = router

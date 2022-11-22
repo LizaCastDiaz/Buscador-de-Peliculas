@@ -25,7 +25,7 @@ RentalsControllers.getAllRentals = async (req, res) => {
 }
 
 //-------------------------------------------------------------------------------------
-//LIST ALL THE ORDERS OF A USER
+//LIST ALL THE RENTAL OF A USER
 RentalsControllers.getRentalsFromUser = async (req, res) => {
     try {
         let email = req.params.email
@@ -46,7 +46,7 @@ RentalsControllers.getRentalsFromUser = async (req, res) => {
 }
 
 //-------------------------------------------------------------------------------------
-//GENERATE A NEW ORDER
+//GENERATE A NEW RENTAL
 RentalsControllers.NewRental = async (req, res) => {
     try {
         let data = req.body
@@ -68,7 +68,7 @@ RentalsControllers.NewRental = async (req, res) => {
 }
 
 //-------------------------------------------------------------------------------------
-//UPDATE ORDER by ID
+//UPDATE RENTAL by ID
 RentalsControllers.updateRentalById = async (req, res) => {
     try {
         let data = req.body
@@ -78,6 +78,7 @@ RentalsControllers.updateRentalById = async (req, res) => {
                 return_date: new Date(),
                 rental_date: new Date(),
                 id_user: data.id_user,
+                id_articles: data.id_articles
             },
             {
                 where: { id_rental: data.id_rental }
