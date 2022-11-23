@@ -80,10 +80,14 @@ DELETE - localhost:3000/user/deleteUsers/:email (Admin Only)
 
 #### RENTAL
 ```
-GET - localhost:3000/rentals/getAll
-GET - localhost:3000/rentals/:email
-POST - localhost:3000/rentals/newRental
+GET - localhost:3000//rental/rentals/getAll  (Admin only)
+GET - localhost:3000/rental/rentals/:email  (Admin only)
+
+POST - localhost:3000/rentals/newRental  
+└───body: {"email", "id_articles", "id_user"}
+
 PUT - localhost:3000/update/:id_order
+└───body: {"id_rental", "email", "return_date", "rental_date","id_user", "id_articles" }
 
 ```
 

@@ -17,7 +17,7 @@ module.exports = {
       },
 
 
-      id_user: {
+      UserIdUser: {
         type: Sequelize.INTEGER,
         references: {
           model: "Users",
@@ -26,7 +26,7 @@ module.exports = {
         onDelete: "cascade",
         onUpdate: "cascade"
       },
-      id_articles: {
+      ArticleIdArticle: {
         type: Sequelize.INTEGER,
         references: {
           model: "Articles",
@@ -39,6 +39,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Rental');
+    await queryInterface.dropTable('Rentals');
   }
 };

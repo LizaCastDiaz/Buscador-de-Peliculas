@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING
       },
 
-      id_role: {
+      RoleIdRole: {
         type: Sequelize.STRING,
         references: {
           model: "Role",

@@ -1,6 +1,6 @@
 // //Importo modelo de datos
-const { Rental } = require('../models/index');
 const models = require('../models/index');
+const Rentals = require('../models/index');
 const { Op } = require('sequelize'); // Import  all ORM sequelize functions
 
 const router = require('express').Router();
@@ -13,19 +13,16 @@ const RentalsControllers = {};// object declaration
 // //------------------ .. ------------------
 
 
-//ALL RENTALS 
+// //ALL RENTALS 
 RentalsControllers.getAllRentals = async (req, res) => {
     try {
-        let resp = await Rental.findAll({
-        })
-            .then(resp => {
-                res.send(resp)
-            })
-    } catch (err) {
-        res.send(err)
-        console.log(err)
+        let resp = await models.Rentals.findAll({});
+        res.send(resp);
+    } catch (error) {
+        res.send(`${error}`);
     }
 }
+
 
 //-------------------------------------------------------------------------------------
 //LIST ALL THE RENTAL OF A USER
@@ -35,11 +32,7 @@ RentalsControllers.getRentalsFromUser = async (req, res) => {
         console.log(email)
         let resp = await models.Rentals.findAll({
             where: { email: email },
-            // include: {
-            //     model: models.Rentals,
-            //     attributes: ['id_rental', 'return_date', "rental_date"]
-            // },
-            attributes: ['email', 'id_rental']
+            attributes: ['email', 'id_user']
         })
         res.send(resp)
     } catch (error) {
@@ -48,17 +41,20 @@ RentalsControllers.getRentalsFromUser = async (req, res) => {
     }
 }
 
+
+
+
 //-------------------------------------------------------------------------------------
 //GENERATE A NEW RENTAL
 RentalsControllers.NewRental = async (req, res) => {
     try {
         let data = req.body
-        let resp = await Rental.create({
+        let resp = await Rentals.create({
             email: data.email,
             return_date: new Date(),
             rental_date: new Date(),
             id_user: data.id_user,
-            id_articles: data.id_articles
+            id_articles: data.ArticlesIdArticles
 
 
         })
@@ -75,7 +71,7 @@ RentalsControllers.NewRental = async (req, res) => {
 RentalsControllers.updateRentalById = async (req, res) => {
     try {
         let data = req.body
-        let resp = await Rental.update(
+        let resp = await Rentals.update(
             {
                 email: data.email,
                 return_date: new Date(),

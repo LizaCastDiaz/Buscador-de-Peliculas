@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsTo(models.Role);
     }
   }
+  // Model attributes are defined here
   User.init({
     id_user: {
       type: DataTypes.INTEGER,
@@ -24,23 +25,24 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     surname: DataTypes.STRING,
     document: {
-      type:DataTypes.STRING,
+      type: DataTypes.STRING,
       unique: true,
     },
     email: {
-      type:DataTypes.STRING,
-      unique:true,
-      allowNull:false,
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
 
     },
-    password: DataTypes.STRING ,
-    
+    password: DataTypes.STRING,
+
+
   },
-  
-  {
-    sequelize,
-    modelName: 'Users',
-  });
-   return User;
+
+    {
+      sequelize,
+      modelName: 'Users',
+    });
+  return User;
 };
 
