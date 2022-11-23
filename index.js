@@ -1,14 +1,14 @@
-const express = require('express'); //agregas express a la variable
-const app = express(); //para ejecutar express
+const express = require('express'); //you add express to the variable
+const app = express(); //to run express
 const colors = require('colors');
 const morgan = require('morgan');
 const logger = require('./config/wiston')
-const db = require('./db/db'); //me traigo la base de datos
-const router = require('./router.js');//llamamos al archivo router //puerto de conexion
+const db = require('./db/db'); //I bring the database
+const router = require('./router.js');//we call the file router // connection port
 //const cors = require("cors"); // Import cors module
 
 
-const PORT = process.env.PORT | 3000;  //puerto de conexion
+const PORT = process.env.PORT | 3000;  //connection port
 
 
 //Config Cors Options
@@ -20,7 +20,7 @@ const PORT = process.env.PORT | 3000;  //puerto de conexion
 //   };
 
 //Middleware
-app.use(express.json()); //indicamos al archivo express que utilice los archivos .JSON
+app.use(express.json()); //we tell the express file to use the .JSON files
 app.use(morgan('combined', { stream: logger.stream }));
 // app.use(cors(corsOptions)); //Add CORS Middleware
 

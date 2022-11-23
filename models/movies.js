@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Movie.init({
-    id_movies:{
+    id_movies: {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
@@ -26,15 +26,15 @@ module.exports = (sequelize, DataTypes) => {
     rating: DataTypes.INTEGER,
     synopsis: DataTypes.TEXT,
     director: DataTypes.STRING,
-    duration: DataTypes.STRING, 
-    in_theters: DataTypes.BOOLEAN    
+    duration: DataTypes.STRING,
+    in_theters: DataTypes.BOOLEAN
   },
-  {
-    sequelize,
-    modelName: 'Movies',
-    timestamps: false
-  
-   
-  });
+    {
+      sequelize,
+      modelName: 'Movies',
+      timestamps: false
+
+
+    });
   return Movie;
 };

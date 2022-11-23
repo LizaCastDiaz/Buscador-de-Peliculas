@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Serie.init({
-    id_series:{
+    id_series: {
       type: DataTypes.INTEGER,
       allowNull: false,
       autoIncrement: true,
@@ -28,9 +28,9 @@ module.exports = (sequelize, DataTypes) => {
     episodes: DataTypes.INTEGER,
     new_episode: DataTypes.BOOLEAN,
     Overview: DataTypes.TEXT
-    
-    
-  },{  
+
+
+  }, {
     sequelize,
     modelName: 'Series',
     timestamps: false

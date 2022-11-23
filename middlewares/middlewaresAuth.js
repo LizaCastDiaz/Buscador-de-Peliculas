@@ -85,8 +85,8 @@ const isValidUser = async (req, res, next) => {
   const { authorization } = req.headers;
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET)
-  
-  
+
+
   let email = req.params.email;
   console.log(req.params.email)
 

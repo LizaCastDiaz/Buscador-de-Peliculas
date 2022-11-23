@@ -26,13 +26,13 @@ module.exports = (sequelize, DataTypes) => {
     return_date: DataTypes.DATE,
     rental_date: DataTypes.DATE,
     id_articles: DataTypes.INTEGER
-   }, 
-   
-  
-  {
-    sequelize,
-    modelName: 'Rentals',
+  },
 
-  });
+
+    {
+      sequelize,
+      modelName: 'Rentals',
+
+    });
   return Rental;
 };

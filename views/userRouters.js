@@ -14,7 +14,7 @@ const UserControllers = require('../controllers/userControllers')
 router.get('/allUsers', authBearerMiddleware, isValidRoleAdmin, UserControllers.getAll); //OK
 
 //GET USER BY ID
-router.get('/userid/:id',authBearerMiddleware, isValidRoleAdmin, UserControllers.getById);
+router.get('/userid/:id', authBearerMiddleware, isValidRoleAdmin, UserControllers.getById);
 
 // //USER SIGNUP
 // router.post('/signUp', UserControllers.signUp); 

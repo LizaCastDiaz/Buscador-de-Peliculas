@@ -1,6 +1,6 @@
 // //Importo modelo de datos
 const router = require("express").Router();
-const {Users}= require('../models/index');
+const { Users } = require('../models/index');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
@@ -18,9 +18,11 @@ UserControllers.getAll = async (req, res) => {
     Users.findAll().then(data => {
         res.send(data);
     })
-        .catch(err => {res.status(500).send({
-        message: err.message || " error ."});
-    });
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || " error ."
+            });
+        });
 };
 
 
@@ -33,10 +35,10 @@ UserControllers.getById = async (req, res) => {
         let id = req.params.id;
 
         let resp = await Users.findOne({
-        where: {
-        id_user: id
-        },
-    });
+            where: {
+                id_user: id
+            },
+        });
         res.send(resp);
     } catch (error) {
         res.send(error);
@@ -102,9 +104,9 @@ UserControllers.getById = async (req, res) => {
 
 
 //-------------------------------------------------------------------------------------
- 
+
 // UPDATE USER
-UserControllers.updateUser= async (req, res) => {
+UserControllers.updateUser = async (req, res) => {
     try {
         let data = req.body
         let resp = await Users.update(
@@ -112,7 +114,7 @@ UserControllers.updateUser= async (req, res) => {
                 email: data.email,
                 //password: data.password,
                 name: data.name,
-                surname:data.surname
+                surname: data.surname
             },
             {
                 where: { email: data.email }
@@ -123,11 +125,12 @@ UserControllers.updateUser= async (req, res) => {
 
     } catch (err) {
         res.send(err)
-    }} 
+    }
+}
 
-  //-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
 
-  // DELETE USER (can only be done by the admin)
+// DELETE USER (can only be done by the admin)
 UserControllers.deleteUser = async (req, res) => {
     try {
         let email = req.params.email
@@ -145,10 +148,10 @@ UserControllers.deleteUser = async (req, res) => {
         res.send(err)
     }
 
- 
-    
-  };
-  
+
+
+};
+
 //Export
 module.exports = UserControllers;
 
