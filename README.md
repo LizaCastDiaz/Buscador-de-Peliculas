@@ -69,12 +69,12 @@ GET - localhost:3000/series/byNewEpisode
 
 #### USERS
 ```
-GET - localhost:3000/user/allUsers
-GET - localhost:3000/user/userId/:id
-POST - localhost:3000/auth/logIn
+GET - localhost:3000/user/allUsers 
+GET - localhost:3000/user/userid/:id 
 POST - localhost:3000/auth/register
-PATCH - localhost:3000/user/updateUser/:email
-DELETE - localhost:3000/user/deleteUsers/:email
+POST - localhost:3000/auth/login
+PATCH - localhost:3000/user/updateUser/:email (Admin only)
+DELETE - localhost:3000/user/deleteUsers/:email (Admin Only)
 
 ```
 

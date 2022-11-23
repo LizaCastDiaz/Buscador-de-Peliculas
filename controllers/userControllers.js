@@ -1,9 +1,10 @@
 // //Importo modelo de datos
 const router = require("express").Router();
-const {User}= require('../models/index');
+const {Users}= require('../models/index');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
+const models = require("../models/index")
 
 const UserControllers = {}; //Create the object controller
 
@@ -14,7 +15,7 @@ const UserControllers = {}; //Create the object controller
 //GET ALL USERS
 UserControllers.getAll = async (req, res) => {
 
-    User.findAll().then(data => {
+    Users.findAll().then(data => {
         res.send(data);
     })
         .catch(err => {res.status(500).send({
@@ -31,7 +32,7 @@ UserControllers.getById = async (req, res) => {
     try {
         let id = req.params.id;
 
-        let resp = await User.findOne({
+        let resp = await Users.findOne({
         where: {
         id_user: id
         },
@@ -106,11 +107,12 @@ UserControllers.getById = async (req, res) => {
 UserControllers.updateUser= async (req, res) => {
     try {
         let data = req.body
-        let resp = await User.update(
+        let resp = await Users.update(
             {
                 email: data.email,
-                password: data.password,
-                name: data.name
+                //password: data.password,
+                name: data.name,
+                surname:data.surname
             },
             {
                 where: { email: data.email }
@@ -129,7 +131,7 @@ UserControllers.updateUser= async (req, res) => {
 UserControllers.deleteUser = async (req, res) => {
     try {
         let email = req.params.email
-        let resp = await User.destroy({
+        let resp = await models.Users.destroy({
             where: { email: email }
         })
 
@@ -144,6 +146,7 @@ UserControllers.deleteUser = async (req, res) => {
     }
 
  
+    
   };
   
 //Export

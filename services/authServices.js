@@ -1,4 +1,4 @@
-const { User } = require('../models/index');
+const { Users } = require('../models/index');
 const crypto = require("node:crypto");
 
 function assertValidPasswordService(pass) {
@@ -22,7 +22,7 @@ function assertValidPasswordService(pass) {
 async function assertEmailIsUniqueService(email) {
   console.log(email)
   // validate email is unique
-  const user = await User.findOne({
+  const user = await Users.findOne({
     where: { email: email }
   });
   if (user) {
@@ -34,7 +34,7 @@ async function createUserService(userBody) {
   delete userBody.role;
   const hash = encryptPassword(userBody.password);
   userBody.password = hash;
-  const user = await User.create(userBody);
+  const user = await Users.create(userBody);
   return user;
 }
 
@@ -58,7 +58,7 @@ function encryptPassword(password) {
 }
 
 async function isValidUserAndPassword(User, password) { //user
-  const userFound = await User.findOne({
+  const userFound = await Users.findOne({
     where: { email: email }
   });
   if (userFound) {

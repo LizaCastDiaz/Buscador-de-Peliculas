@@ -8,7 +8,7 @@ const router = require('./router.js');//llamamos al archivo router //puerto de c
 //const cors = require("cors"); // Import cors module
 
 
-const PORT = process.env.PORT | 6000;  //puerto de conexion
+const PORT = process.env.PORT | 3000;  //puerto de conexion
 
 
 //Config Cors Options

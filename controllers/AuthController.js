@@ -70,7 +70,7 @@ async function authLoginController(req, res) {
 
   try {
     const { email, password } = req.body;
-    const userFound = await User.findOne({ where: { email: email } });
+    const userFound = await Users.findOne({ where: { email: email } });
     if (!userFound) {
       res.status(401).json({ message: "Password or email is incorrect" });
       return;
