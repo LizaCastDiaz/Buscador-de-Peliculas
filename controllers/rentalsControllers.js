@@ -1,7 +1,10 @@
 // //Importo modelo de datos
 const { Rental } = require('../models/index');
+const models = require('../models/index');
 const { Op } = require('sequelize'); // Import  all ORM sequelize functions
+
 const router = require('express').Router();
+
 const RentalsControllers = {};// object declaration
 
 
@@ -30,13 +33,13 @@ RentalsControllers.getRentalsFromUser = async (req, res) => {
     try {
         let email = req.params.email
         console.log(email)
-        let resp = await User.findAll({
+        let resp = await models.Rentals.findAll({
             where: { email: email },
-            include: {
-                model: Rental,
-                attributes: ['id_rental', 'return_date', "rental_date"]
-            },
-            attributes: ['email', 'name']
+            // include: {
+            //     model: models.Rentals,
+            //     attributes: ['id_rental', 'return_date', "rental_date"]
+            // },
+            attributes: ['email', 'id_rental']
         })
         res.send(resp)
     } catch (error) {

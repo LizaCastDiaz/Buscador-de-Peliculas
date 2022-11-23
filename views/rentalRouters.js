@@ -19,7 +19,7 @@ router.get('/rentals/:email', authBearerMiddleware, isValidRoleAdmin, RentalsCon
 //POST GENERATE A NEW ORDER
 router.post('/rentals/newRental', authBearerMiddleware, RentalsControllers.NewRental);
 //MODIFY ORDER
-router.put('/update/:id_order', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.updateRentalById);
+router.put('/update/:id_rental', authBearerMiddleware, isValidRoleAdmin, RentalsControllers.updateRentalById);
 
 
 //Export

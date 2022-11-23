@@ -1,4 +1,4 @@
-const { User } = require('../models/index');
+const { Users } = require('../models/index');
 
 const {
   assertValidPasswordService,

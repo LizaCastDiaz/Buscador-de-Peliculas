@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       //Rental.belongsToMany(models.Articles,); 
-      Rental.belongsTo(models.User);
+      Rental.belongsTo(models.Users);
     }
   }
   Rental.init({
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   
   {
     sequelize,
-    modelName: 'Rental',
+    modelName: 'Rentals',
 
   });
   return Rental;

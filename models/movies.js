@@ -3,17 +3,17 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Movies extends Model {
+  class Movie extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Movies.belongsTo(models.Articles);
+      Movie.belongsTo(models.Articles);
     }
   }
-  Movies.init({
+  Movie.init({
     id_movies:{
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -36,5 +36,5 @@ module.exports = (sequelize, DataTypes) => {
   
    
   });
-  return Movies;
+  return Movie;
 };
