@@ -24,7 +24,7 @@ router.get('/userid/:id', authBearerMiddleware, isValidRoleAdmin, UserController
 
 //UPDATE USER PROFILE
 router.patch('/updateUser/:email', authBearerMiddleware, isValidRoleAdmin, isValidUser, UserControllers.updateUser);
-
+`
 //DELETE USER (can only be done by the admin)
 router.delete('/deleteUsers/:email', authBearerMiddleware, isValidRoleAdmin, UserControllers.deleteUser);
 
